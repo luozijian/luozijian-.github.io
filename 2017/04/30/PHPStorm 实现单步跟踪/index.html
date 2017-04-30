@@ -1,0 +1,920 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具,PHP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome  Homestead中配置Xdebug 使用 v">
+<meta name="keywords" content="工具,PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHPStorm 实现单步跟踪">
+<meta property="og:url" content="http://luozijian.top/2017/04/30/PHPStorm 实现单步跟踪/index.html">
+<meta property="og:site_name" content="JUST FOR FUN">
+<meta property="og:description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome  Homestead中配置Xdebug 使用 v">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LycH0ivquM.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/DfSFe90Fk9.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/87Tq7A00hv.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/0MUUXtCCaF.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/14/58f06efbe8ef1.gif">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LNmgdcRHTI.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/KDhan9m2Ly.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/coiBsigMrk.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/14/58f07084810eb.gif">
+<meta property="og:updated_time" content="2017-04-30T13:27:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHPStorm 实现单步跟踪">
+<meta name="twitter:description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome  Homestead中配置Xdebug 使用 v">
+<meta name="twitter:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://luozijian.top/2017/04/30/PHPStorm 实现单步跟踪/"/>
+
+
+
+
+
+  <title>PHPStorm 实现单步跟踪 | JUST FOR FUN</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST FOR FUN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">罗宝健的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/PHPStorm 实现单步跟踪/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHPStorm 实现单步跟踪
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T13:27:49+00:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IDE-配置/" itemprop="url" rel="index">
+                    <span itemprop="name">IDE 配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/PHPStorm 实现单步跟踪/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/PHPStorm 实现单步跟踪/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近和小伙伴志平在做一个比赛项目，主要用 <code>PHP</code> 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 <code>Visual Studio</code>  那样 <strong><strong>单步跟踪</strong></strong> 的调试，于是我今晚尝试了一下，在 <code>PHPStorm</code> 里配置 <strong>单步跟踪</strong>。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>Homestead</li>
+<li>PHPStorm2017</li>
+<li>PHP7.0</li>
+<li>Chrome</li>
+</ul>
+<h2 id="Homestead中配置Xdebug"><a href="#Homestead中配置Xdebug" class="headerlink" title="Homestead中配置Xdebug"></a>Homestead中配置Xdebug</h2><ol>
+<li>使用 <code>vagrant up</code> 启动你的 <code>Homestead</code> </li>
+<li>命令行下 <code>sudo vi /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> (注意你的 php 版本和对应的文件夹) </li>
+<li><p>复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=xdebug.so</div><div class="line">xdebug.remote_enable = 1</div><div class="line">xdebug.remote_connect_back = 1</div><div class="line">xdebug.remote_port = 9000</div><div class="line">xdebug.scream=0 </div><div class="line">xdebug.cli_color=1</div><div class="line">xdebug.show_local_vars=1</div></pre></td></tr></table></figure>
+</li>
+<li><p>保存这个文件（如果这个文件不存在的话，这样建立一个软连接过来 <code>sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> ），如果你还不明白软连接，可以参考 <a href="http://www.cnblogs.com/kex1n/p/5193826.html" target="_blank" rel="external">软连接</a></p>
+</li>
+<li>重启 <code>php7.0-fpm</code> ：<code>sudo service php7.0-fpm restart</code></li>
+</ol>
+<h2 id="Chorme中安装Xdebug-helper"><a href="#Chorme中安装Xdebug-helper" class="headerlink" title="Chorme中安装Xdebug helper"></a>Chorme中安装Xdebug helper</h2><ol>
+<li>安装chrome扩展 <a href="https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc" target="_blank" rel="external">Xdebug helper</a></li>
+<li>进入 Xdebug hepler 的配置选项中，选择 IDE key 为 PHPStorm<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png" alt="file"></li>
+<li>把扩展调整为 debug 模式，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LycH0ivquM.png" alt="file"></li>
+</ol>
+<h2 id="配置你的PHPStorm"><a href="#配置你的PHPStorm" class="headerlink" title="配置你的PHPStorm"></a>配置你的PHPStorm</h2><ol>
+<li>打开你的 PHPStorm 并设置一个测试断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/DfSFe90Fk9.png" alt="file"></li>
+<li>打开 PHPStorm 中的 右上角小电话，即可开始监听断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/87Tq7A00hv.png" alt="file"></li>
+<li>最后设置一些你的项目目录，就是你的项目目录对应你映射到 Homestead 的目录<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/0MUUXtCCaF.png" alt="file"></li>
+<li>在 PHPStorm 右上角选择刚刚新建的 Server，如图<br><img src="https://ooo.0o0.ooo/2017/04/14/58f06efbe8ef1.gif" alt="file"></li>
+<li>配置你的 Server （比如你想从哪个url开始跟踪）<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LNmgdcRHTI.png" alt="file"></li>
+<li>点击 PHPStorm 右上角小甲虫，你就会发现弹出了个对话框并且已经开始调试了<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/KDhan9m2Ly.png" alt="file"></li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ol>
+<li>好了，如果你看到这里，你的 <code>PHPStorm</code> 应该已经有了 <strong>单步跟踪</strong> 的新功能啦～，让我们来看下效果，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/coiBsigMrk.png" alt="file"></li>
+<li>​就是这么简单的操作～，想要随时随地调试你的页面的小伙伴搞起来啦～。突然想起今天志平要的接口还没完成 :sweat_smile: ，管他呢，睡个好觉先。<br><img src="https://ooo.0o0.ooo/2017/04/14/58f07084810eb.gif" alt="file"></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>喜欢我的文章的话，不如请我大保健</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpeg" alt="Luozijian WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Luozijian Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/30/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/30/Laravel-sms 配置短信服务/" rel="prev" title="Larval-sms + 阿里大鱼 配置定时发送短信服务">
+                Larval-sms + 阿里大鱼 配置定时发送短信服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Luozijian" />
+          <p class="site-author-name" itemprop="name">Luozijian</p>
+           
+              <p class="site-description motion-element" itemprop="description">随笔，学习心得</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luozijian" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/lujexm" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/LuozijianWorld" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/luozijian2017" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/luozijian2017" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.szu.space/" title="张智的个人博客" target="_blank">张智的个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homestead中配置Xdebug"><span class="nav-number">2.</span> <span class="nav-text">Homestead中配置Xdebug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chorme中安装Xdebug-helper"><span class="nav-number">3.</span> <span class="nav-text">Chorme中安装Xdebug helper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置你的PHPStorm"><span class="nav-number">4.</span> <span class="nav-text">配置你的PHPStorm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luozijian</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://luozijian.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://luozijian.top/2017/04/30/PHPStorm 实现单步跟踪/';
+          this.page.identifier = '2017/04/30/PHPStorm 实现单步跟踪/';
+          this.page.title = 'PHPStorm 实现单步跟踪';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://luozijian.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

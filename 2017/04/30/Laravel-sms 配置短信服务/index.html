@@ -1,0 +1,938 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Laravel,工具," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
+<meta name="keywords" content="Laravel,工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Larval-sms + 阿里大鱼 配置定时发送短信服务">
+<meta property="og:url" content="http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/index.html">
+<meta property="og:site_name" content="JUST FOR FUN">
+<meta property="og:description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg">
+<meta property="og:updated_time" content="2017-04-30T13:27:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Larval-sms + 阿里大鱼 配置定时发送短信服务">
+<meta name="twitter:description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/"/>
+
+
+
+
+
+  <title>Larval-sms + 阿里大鱼 配置定时发送短信服务 | JUST FOR FUN</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST FOR FUN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">罗宝健的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Larval-sms + 阿里大鱼 配置定时发送短信服务
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T13:27:49+00:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel 学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/Laravel-sms 配置短信服务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/Laravel-sms 配置短信服务/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg" alt="file"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>引入依赖 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer require toplan/laravel-sms:~2.6</div></pre></td></tr></table></figure>
+</li>
+<li><p>参数配置 </p>
+<ul>
+<li><p>在config/app.php文件中providers数组里加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toplan\PhpSms\PhpSmsServiceProvider::class,</div><div class="line">Toplan\Sms\SmsManagerServiceProvider::class,</div></pre></td></tr></table></figure>
+</li>
+<li><p>在config/app.php文件中的aliases数组里加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&apos;PhpSms&apos; =&gt; Toplan\PhpSms\Facades\Sms::class,</div><div class="line">&apos;SmsManager&apos; =&gt; Toplan\Sms\Facades\SmsManager::class,</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><p>修改 <code>config/phpsms.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scheme&apos; =&gt; [</div><div class="line">	&apos;Alidayu&apos;,//配置代理器为阿里大鱼</div><div class="line">],</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>app/helpers.php</code> ，复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function sendMessage($mobile,$template_id,$tempData)&#123;</div><div class="line">    $templates = [</div><div class="line">        &apos;Alidayu&apos; =&gt; $template_id//模板id</div><div class="line">    ];</div><div class="line">    Toplan\PhpSms\Sms::make()-&gt;to($mobile)-&gt;template($templates)-&gt;data($tempData)-&gt;send();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Artisan-命令行"><a href="#Artisan-命令行" class="headerlink" title="Artisan 命令行"></a>Artisan 命令行</h2><ol>
+<li><p>生成命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:command SendMessage</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置命令</p>
+<p>刚才生成的 <strong>Artisan 命令行</strong> 文件在 <code>app/Console/Commands</code> 目录，我们修改目录下刚刚生成的的 <code>SendMessage.php</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Console\Commands;</div><div class="line"></div><div class="line">use Illuminate\Console\Command;</div><div class="line"></div><div class="line">class SendMessage extends Command</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * The name and signature of the console command.</div><div class="line">     *</div><div class="line">     * @var string</div><div class="line">     */</div><div class="line">    protected $signature = &apos;message:send&apos;;//命令的格式，比如这里命令就是 php artisan message:send</div><div class="line"></div><div class="line">    /**</div><div class="line">     * The console command description.</div><div class="line">     *</div><div class="line">     * @var string</div><div class="line">     */</div><div class="line">    protected $description = &apos;Send message to user&apos;;//命令的描述</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Create a new command instance.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function __construct()</div><div class="line">    &#123;</div><div class="line">        parent::__construct();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Execute the console command.</div><div class="line">     *</div><div class="line">     * @return mixed</div><div class="line">     */</div><div class="line">    public function handle()</div><div class="line">    &#123;</div><div class="line">        //这里处理你的业务逻辑</div><div class="line">        $mobile = 11111111111;//要发送的手机号</div><div class="line">        template_id ＝ 111111;//你的阿里大鱼模板id</div><div class="line">        $tempData = [</div><div class="line">      		&apos;name&apos; =&gt; &apos;123&apos;,//模板变量自定</div><div class="line">    	];</div><div class="line">        sendMessage($mobile,$template_id,$tempData);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注册命令</p>
+<p>修改 <code>app/Console/Kernel.php</code> 文件，添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">protected $commands = [</div><div class="line">	Commands\SendMessage::class,</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+<li><p>确认命令正确生成和配置</p>
+<p>使用 <code>php artisan list</code> 命令，如果能看到 <code>php artisan message:send</code> 说明配置成功</p>
+</li>
+</ol>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>在你的服务器（linux）使用 <code>crontab -e</code>，添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* * 1 * * cd 你的项目根目录 &amp;&amp; php artisan message:send</div></pre></td></tr></table></figure>
+<p>这是每天执行一次的定时任务，如果你还不明白定时任务怎么使用，请查看 <a href="http://www.jb51.net/LINUXjishu/19905.html" target="_blank" rel="external">定时任务用法例子</a></p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>为了方便我们排查错误，我们在数据库创建一个日志表 <code>laravel-sms</code></p>
+<ol>
+<li><p>创建 <code>migration</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_sms_table --create</div></pre></td></tr></table></figure>
+</li>
+<li><p>复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">use Illuminate\Database\Migrations\Migration;</div><div class="line">use Illuminate\Database\Schema\Blueprint;</div><div class="line"></div><div class="line">class CreateSmsTable extends Migration</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function up()</div><div class="line">    &#123;</div><div class="line">        Schema::create(&apos;laravel_sms&apos;, function (Blueprint $table) &#123;</div><div class="line">            $table-&gt;increments(&apos;id&apos;);</div><div class="line"></div><div class="line">            //to:用于存储手机号</div><div class="line">            $table-&gt;string(&apos;to&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //temp_id:存储模板标记，用于存储任何第三方服务商提供的短信模板标记/id</div><div class="line">            $table-&gt;string(&apos;temp_id&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //data:模板短信的模板数据，建议json格式</div><div class="line">            $table-&gt;string(&apos;data&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //content:内容</div><div class="line">            $table-&gt;string(&apos;content&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //voice_code:语言验证码code</div><div class="line">            $table-&gt;string(&apos;voice_code&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //发送失败次数</div><div class="line">            $table-&gt;mediumInteger(&apos;fail_times&apos;)-&gt;default(0);</div><div class="line"></div><div class="line">            //最后一次发送失败时间</div><div class="line">            $table-&gt;integer(&apos;last_fail_time&apos;)-&gt;unsigned()-&gt;default(0);</div><div class="line"></div><div class="line">            //发送成功时的时间</div><div class="line">            $table-&gt;integer(&apos;sent_time&apos;)-&gt;unsigned()-&gt;default(0);</div><div class="line"></div><div class="line">            //代理器使用日志，记录每个代理器的发送状态，可用于排错</div><div class="line">            $table-&gt;text(&apos;result_info&apos;)-&gt;nullable();</div><div class="line"></div><div class="line">            $table-&gt;timestamps();</div><div class="line">            $table-&gt;softDeletes();</div><div class="line">            $table-&gt;engine = &apos;InnoDB&apos;;</div><div class="line"></div><div class="line">            //说明</div><div class="line">            //1：temp_id和data用于发送模板短信。</div><div class="line">            //2：content用于直接发送短信内容，不使用模板。</div><div class="line">            //3：voice_code用于存储语言验证码code。</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function down()</div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(&apos;laravel_sms&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迁移数据库</p>
+<p><code>php artisan migrate</code></p>
+<p>这样我们就可以很方便的查看日志来排查错误啦</p>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><blockquote>
+<p>laravel-sms 官方文档：<a href="https://github.com/toplan/laravel-sms" target="_blank" rel="external">https://github.com/toplan/laravel-sms</a></p>
+<p>php-sms 官方文档：<a href="https://github.com/toplan/phpsms" target="_blank" rel="external">https://github.com/toplan/phpsms</a></p>
+<p>Artisan 命令行 官方文档：<a href="http://d.laravel-china.org/docs/5.3/artisan#registering-commands" target="_blank" rel="external">http://d.laravel-china.org/docs/5.3/artisan#registering-commands</a> </p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>喜欢我的文章的话，不如请我大保健</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpeg" alt="Luozijian WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Luozijian Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Laravel/" rel="tag"># Laravel</a>
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/30/PHPStorm 实现单步跟踪/" rel="next" title="PHPStorm 实现单步跟踪">
+                <i class="fa fa-chevron-left"></i> PHPStorm 实现单步跟踪
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/30/Laravel 配置邮件服务/" rel="prev" title="Larval 自带SMTP配置邮件服务">
+                Larval 自带SMTP配置邮件服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Luozijian" />
+          <p class="site-author-name" itemprop="name">Luozijian</p>
+           
+              <p class="site-description motion-element" itemprop="description">随笔，学习心得</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luozijian" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/lujexm" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/LuozijianWorld" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/luozijian2017" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/luozijian2017" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.szu.space/" title="张智的个人博客" target="_blank">张智的个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Artisan-命令行"><span class="nav-number">3.</span> <span class="nav-text">Artisan 命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">4.</span> <span class="nav-text">定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug"><span class="nav-number">5.</span> <span class="nav-text">Debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luozijian</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://luozijian.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/';
+          this.page.identifier = '2017/04/30/Laravel-sms 配置短信服务/';
+          this.page.title = 'Larval-sms + 阿里大鱼 配置定时发送短信服务';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://luozijian.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

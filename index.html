@@ -1,30 +1,1718 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ben Wong,wenbinben@gmail.com"><title>JUST FOR FUN</title><meta name="description" content="随笔，学习心得"><meta name="keywords" content="Hexo,HTML,Ben,CSS,安卓,android,Linux,linuxdeepin"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/avatar.jpg" style="width:127px;"><h3 title=""><a href="/">JUST FOR FUN</a></h3><div class="description"><p>随笔，学习心得</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/lujexm"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/lzj564774252"><i class="fa fa-instagram"></i></a></li><li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/LuozijianWorld"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><!--a(target="_blank", href="/")--><!--  span Theme by--><!--a(href="https://www.caicai.me")  CaiCai--><!--span &--><!--a(href="https://github.com/Ben02/hexo-theme-Anatole")  Ben--><!--.by_farbox--><!--  a(href="https://hexo.io/zh-cn/", target="_blank") Proudly published with Hexo&#65281;--></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/" class="current">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" style="display:none;" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/avatar.jpg" style="width:32;"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/04/20/Laravel 配置邮件服务/">Larval 自带SMTP配置邮件服务</a></h3></div><div class="post-content"><p>
-开启邮箱服务
-要使用邮箱服务就必须开启邮箱的 POP3 服务和 SMTP 服务，本教程演示 QQ邮箱的配置
+<!doctype html>
 
 
-登录你的 QQ邮箱，来到 设置-&gt;账户，开启下图中的服务
+
+  
 
 
-记录下生成的授权码！记录下生成的授权码！记录下生成的授权码！重要的事情说三遍！
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
-配置
-修改 .env 文件，复制以下内容进去
-1...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-21</span><i class="fa fa-comment-o"></i><a href="/2017/04/20/Laravel 配置邮件服务/#comments">评论</a><i class="fa fa-tag"></i></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/04/20/Laravel-sms 配置短信服务/">Larval-sms + 阿里大鱼 配置定时发送短信服务</a></h3></div><div class="post-content"><p>
-安装
-引入依赖 
-1composer require toplan/laravel-sms:~2.6
 
-参数配置 
 
-在config/app.php文件中providers数组里加入：
-12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsMana...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-21</span><i class="fa fa-comment-o"></i><a href="/2017/04/20/Laravel-sms 配置短信服务/#comments">评论</a><i class="fa fa-tag"></i></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/04/14/Laravel 常见问题汇总/">Laravel 常见问题汇总</a></h3></div><div class="post-content"><p>Laravel 常见问题汇总作为一个 Laravel 开发者，在部署 Laravel 项目的时候总是会遇到这样那样奇怪的问题，每次遇到都要去 Google，实在是有点麻烦，就想自己整理一篇文章来记录这些常见的问题。
-目录[TOC]
-常见问题一：Specified key was too long
-在开发 Lara...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-14</span><i class="fa fa-comment-o"></i><a href="/2017/04/14/Laravel 常见问题汇总/#comments">评论</a><i class="fa fa-tag"></i></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/04/14/PHPStorm 实现单步跟踪/">PHPStorm 实现单步跟踪</a></h3></div><div class="post-content"><p>最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。
-环境
-Homestead
-PHPStorm...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-14</span><i class="fa fa-comment-o"></i><a href="/2017/04/14/PHPStorm 实现单步跟踪/#comments">评论</a><i class="fa fa-tag"></i></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/04/14/使用 GitHub Pages + Hexo 免服务器搭建个人博客/">使用 GitHub Pages + Hexo 免服务器搭建个人博客</a></h3></div><div class="post-content"><p>废话不说，先上图
-背景很久之前就想搭建一个属于自己的博客，也有人推荐用 WordPress 啥的，但是之前也一直抽不出时间来弄，最近参加的比赛暂时过了校赛，闲暇之余，就想起来把博客整一整啦
-GitHub Pages 是什么GitHub Pages 是通过在 GitHub 网站托管和发布的公开网页，因此是不需要我们...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-14</span><i class="fa fa-comment-o"></i><a href="/2017/04/14/使用 GitHub Pages + Hexo 免服务器搭建个人博客/#comments">评论</a><i class="fa fa-tag"></i></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/04/07/hello-world/">Hello World</a></h3></div><div class="post-content"><p>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trouble...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-07</span><i class="fa fa-comment-o"></i><a href="/2017/04/07/hello-world/#comments">评论</a><i class="fa fa-tag"></i></div></div></div></div><div class="pagination"><ul class="clearfix"></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="随笔，学习心得">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JUST FOR FUN">
+<meta property="og:url" content="http://luozijian.top/index.html">
+<meta property="og:site_name" content="JUST FOR FUN">
+<meta property="og:description" content="随笔，学习心得">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JUST FOR FUN">
+<meta name="twitter:description" content="随笔，学习心得">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://luozijian.top/"/>
+
+
+
+
+
+  <title>JUST FOR FUN</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST FOR FUN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">罗宝健的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/Laravel 常见问题汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/Laravel 常见问题汇总/" itemprop="url">
+                  Laravel 常见问题汇总
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T21:35:21+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel 学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/Laravel 常见问题汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/Laravel 常见问题汇总/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个 <strong>Laravel</strong> 开发者，在部署 <strong>Laravel</strong> 项目的时候总是会遇到这样那样奇怪的问题，每次遇到都要去 <strong>Google</strong>，实在是有点麻烦，就想自己整理一篇文章来记录这些常见的问题。</p>
+<h2 id="常见问题一：Specified-key-was-too-long"><a href="#常见问题一：Specified-key-was-too-long" class="headerlink" title="常见问题一：Specified key was too long"></a>常见问题一：Specified key was too long</h2><p><img src="https://ooo.0o0.ooo/2017/04/14/58f0b033734d8.png" alt="file"></p>
+<p>在开发 <strong>Laravel</strong> 的项目时，有时我们需要对数据库进行迁移，可是当我们在别的环境下跑 <code>php artisan migrate</code> 的时候经常会出现以下报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[Illuminate\Database\QueryException]</div><div class="line">SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table users add unique users_email_unique (email))</div><div class="line"></div><div class="line">[PDOException]</div><div class="line">SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes</div></pre></td></tr></table></figure>
+<p>这时候我们把下面的代码添加到 <code>AppServiceProvider.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">use Illuminate\Support\Facades\Schema;</div><div class="line">public function boot()</div><div class="line">&#123;</div><div class="line">    Schema::defaultStringLength(191);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="常见问题二：-This-cache-store-does-not-support-tagging"><a href="#常见问题二：-This-cache-store-does-not-support-tagging" class="headerlink" title="常见问题二： This cache store does not support tagging"></a>常见问题二： This cache store does not support tagging</h2><p>有时候我们在项目跑的好好的，突然使用 <code>php artisan migrate</code> 就会出现这个错误。</p>
+<p>准确的说，这不是一个bug，详情可以参考 <a href="https://github.com/Zizaco/entrust/issues/541" target="_blank" rel="external">这里</a>，这是由于使用了 <strong>entrust</strong> 权限管理包导致，解决的话只需要修改 <code>.env</code> 文件，把 <code>CACHE_DRIVER</code> 改成 <code>array</code> 就可以啦。</p>
+<h2 id="常见问题三：The-only-supported-ciphers-are-xxx-and-xxx-with-the-correct-key-lengths"><a href="#常见问题三：The-only-supported-ciphers-are-xxx-and-xxx-with-the-correct-key-lengths" class="headerlink" title="常见问题三：The only supported ciphers are xxx and xxx with the correct key lengths"></a>常见问题三：The only supported ciphers are xxx and xxx with the correct key lengths</h2><p>这时候先确认你的 <code>.env</code> 文件是否存在，如果没有则创建，如果 <code>.env</code> 文件已经存在，则跑 <code>php artisan key:generate</code> 命令即可</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/Laravel 配置邮件服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/Laravel 配置邮件服务/" itemprop="url">
+                  Larval 自带SMTP配置邮件服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T21:27:49+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel 学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/Laravel 配置邮件服务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/Laravel 配置邮件服务/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://ooo.0o0.ooo/2017/04/21/58f8e1fcb17e4.jpeg" alt="file"></p>
+<h2 id="开启邮箱服务"><a href="#开启邮箱服务" class="headerlink" title="开启邮箱服务"></a>开启邮箱服务</h2><blockquote>
+<p>要使用邮箱服务就必须开启邮箱的 <strong>POP3</strong> 服务和 <strong>SMTP</strong> 服务，本教程演示 <strong>QQ邮箱的配置</strong></p>
+</blockquote>
+<ol>
+<li><p>登录你的 <strong>QQ邮箱</strong>，来到 <strong>设置-&gt;账户</strong>，开启下图中的服务</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/21/58f8e4a45ba4b.png" alt="file"></p>
+</li>
+<li><p>记录下生成的授权码！记录下生成的授权码！记录下生成的授权码！重要的事情说三遍！</p>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><p>修改 <code>.env</code> 文件，复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">MAIL_DRIVER=&quot;smtp&quot; //邮件发送驱动</div><div class="line">MAIL_HOST=&quot;smtp.qq.com&quot; //邮箱所在主机，比如网易邮箱是 smpt.163.com</div><div class="line">MAIL_PORT=25 //邮箱发送服务端口号，比如一般默认值是25，但如果设置SMTP使用SSL加密，该值为465</div><div class="line">MAIL_USERNAME=123456@qq.com //邮箱账号</div><div class="line">MAIL_PASSWORD=abcdefg //刚刚生成的授权码</div><div class="line">MAIL_ENCRYPTION=tls //加密类型，可以设置为null表示不使用任何加密，也可以设置为tls或ssl</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>config/mail.php</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&apos;from&apos; =&gt; [</div><div class="line">	&apos;address&apos; =&gt; &apos;123456@qq.com&apos;, //用来发送邮件的邮箱</div><div class="line">    &apos;name&apos;    =&gt; &apos;&apos;, //发送邮件使用的用户名</div><div class="line">],</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="创建邮件模板"><a href="#创建邮件模板" class="headerlink" title="创建邮件模板"></a>创建邮件模板</h2><p>在 <code>resources/emails</code> 创建一个模板文件 <code>test.blade.php</code>，并复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; $data[&apos;test1&apos;] &#125;&#125; 这是测试 &#123;&#123; $data[&apos;test2&apos;] &#125;&#125;。</div></pre></td></tr></table></figure>
+<h2 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h2><ol>
+<li><p>在 <code>app/helpers.php</code> 添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sendMail($email,$data,$view)&#123;</div><div class="line">    Mail::send(&apos;emails.&apos;.$view,[&apos;data&apos;=&gt;$data],function($message)use($email)&#123;</div><div class="line">        $message-&gt;to($email)-&gt;subject(&apos;【这是邮件标题】&apos;);;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>在你需要调用发送邮件的方法的地方添加以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$email = &apos;123456@qq.com&apos;; //接受邮件的邮箱</div><div class="line">$tempData = [</div><div class="line">  &apos;test1&apos; =&gt; &apos;hello&apos;, //邮件模板变量，自定</div><div class="line">  &apos;test2&apos; =&gt; &apos;world&apos;,</div><div class="line">];</div><div class="line">$view = &apos;test&apos;; //要使用的模板，比如这里的是刚刚创建的模板 test.blade.php</div><div class="line">sendMail($email,$tempData,$view);</div></pre></td></tr></table></figure>
+</li>
+<li><p>邮件还支持 <strong>延时发送</strong>，<strong>添加附件</strong>，<strong>添加图片</strong> 的功能，这里就不展开了，详情可以参考官方文档</p>
+</li>
+</ol>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><blockquote>
+<p>laravel 邮件发送 官方文档：<a href="http://d.laravel-china.org/docs/5.3/mail" target="_blank" rel="external">http://d.laravel-china.org/docs/5.3/mail</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/Laravel-sms 配置短信服务/" itemprop="url">
+                  Larval-sms + 阿里大鱼 配置定时发送短信服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T21:27:49+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel 学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/Laravel-sms 配置短信服务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/Laravel-sms 配置短信服务/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg" alt="file"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>引入依赖 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer require toplan/laravel-sms:~2.6</div></pre></td></tr></table></figure>
+</li>
+<li><p>参数配置 </p>
+<ul>
+<li><p>在config/app.php文件中providers数组里加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toplan\PhpSms\PhpSmsServiceProvider::class,</div><div class="line">Toplan\Sms\SmsManagerServiceProvider::class,</div></pre></td></tr></table></figure>
+</li>
+<li><p>在config/app.php文件中的aliases数组里加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&apos;PhpSms&apos; =&gt; Toplan\PhpSms\Facades\Sms::class,</div><div class="line">&apos;SmsManager&apos; =&gt; Toplan\Sms\Facades\SmsManager::class,</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><p>修改 <code>config/phpsms.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scheme&apos; =&gt; [</div><div class="line">	&apos;Alidayu&apos;,//配置代理器为阿里大鱼</div><div class="line">],</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>app/helpers.php</code> ，复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function sendMessage($mobile,$template_id,$tempData)&#123;</div><div class="line">    $templates = [</div><div class="line">        &apos;Alidayu&apos; =&gt; $template_id//模板id</div><div class="line">    ];</div><div class="line">    Toplan\PhpSms\Sms::make()-&gt;to($mobile)-&gt;template($templates)-&gt;data($tempData)-&gt;send();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Artisan-命令行"><a href="#Artisan-命令行" class="headerlink" title="Artisan 命令行"></a>Artisan 命令行</h2><ol>
+<li><p>生成命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:command SendMessage</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置命令</p>
+<p>刚才生成的 <strong>Artisan 命令行</strong> 文件在 <code>app/Console/Commands</code> 目录，我们修改目录下刚刚生成的的 <code>SendMessage.php</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Console\Commands;</div><div class="line"></div><div class="line">use Illuminate\Console\Command;</div><div class="line"></div><div class="line">class SendMessage extends Command</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * The name and signature of the console command.</div><div class="line">     *</div><div class="line">     * @var string</div><div class="line">     */</div><div class="line">    protected $signature = &apos;message:send&apos;;//命令的格式，比如这里命令就是 php artisan message:send</div><div class="line"></div><div class="line">    /**</div><div class="line">     * The console command description.</div><div class="line">     *</div><div class="line">     * @var string</div><div class="line">     */</div><div class="line">    protected $description = &apos;Send message to user&apos;;//命令的描述</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Create a new command instance.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function __construct()</div><div class="line">    &#123;</div><div class="line">        parent::__construct();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Execute the console command.</div><div class="line">     *</div><div class="line">     * @return mixed</div><div class="line">     */</div><div class="line">    public function handle()</div><div class="line">    &#123;</div><div class="line">        //这里处理你的业务逻辑</div><div class="line">        $mobile = 11111111111;//要发送的手机号</div><div class="line">        template_id ＝ 111111;//你的阿里大鱼模板id</div><div class="line">        $tempData = [</div><div class="line">      		&apos;name&apos; =&gt; &apos;123&apos;,//模板变量自定</div><div class="line">    	];</div><div class="line">        sendMessage($mobile,$template_id,$tempData);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注册命令</p>
+<p>修改 <code>app/Console/Kernel.php</code> 文件，添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">protected $commands = [</div><div class="line">	Commands\SendMessage::class,</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+<li><p>确认命令正确生成和配置</p>
+<p>使用 <code>php artisan list</code> 命令，如果能看到 <code>php artisan message:send</code> 说明配置成功</p>
+</li>
+</ol>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>在你的服务器（linux）使用 <code>crontab -e</code>，添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* * 1 * * cd 你的项目根目录 &amp;&amp; php artisan message:send</div></pre></td></tr></table></figure>
+<p>这是每天执行一次的定时任务，如果你还不明白定时任务怎么使用，请查看 <a href="http://www.jb51.net/LINUXjishu/19905.html" target="_blank" rel="external">定时任务用法例子</a></p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>为了方便我们排查错误，我们在数据库创建一个日志表 <code>laravel-sms</code></p>
+<ol>
+<li><p>创建 <code>migration</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_sms_table --create</div></pre></td></tr></table></figure>
+</li>
+<li><p>复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">use Illuminate\Database\Migrations\Migration;</div><div class="line">use Illuminate\Database\Schema\Blueprint;</div><div class="line"></div><div class="line">class CreateSmsTable extends Migration</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function up()</div><div class="line">    &#123;</div><div class="line">        Schema::create(&apos;laravel_sms&apos;, function (Blueprint $table) &#123;</div><div class="line">            $table-&gt;increments(&apos;id&apos;);</div><div class="line"></div><div class="line">            //to:用于存储手机号</div><div class="line">            $table-&gt;string(&apos;to&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //temp_id:存储模板标记，用于存储任何第三方服务商提供的短信模板标记/id</div><div class="line">            $table-&gt;string(&apos;temp_id&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //data:模板短信的模板数据，建议json格式</div><div class="line">            $table-&gt;string(&apos;data&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //content:内容</div><div class="line">            $table-&gt;string(&apos;content&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //voice_code:语言验证码code</div><div class="line">            $table-&gt;string(&apos;voice_code&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //发送失败次数</div><div class="line">            $table-&gt;mediumInteger(&apos;fail_times&apos;)-&gt;default(0);</div><div class="line"></div><div class="line">            //最后一次发送失败时间</div><div class="line">            $table-&gt;integer(&apos;last_fail_time&apos;)-&gt;unsigned()-&gt;default(0);</div><div class="line"></div><div class="line">            //发送成功时的时间</div><div class="line">            $table-&gt;integer(&apos;sent_time&apos;)-&gt;unsigned()-&gt;default(0);</div><div class="line"></div><div class="line">            //代理器使用日志，记录每个代理器的发送状态，可用于排错</div><div class="line">            $table-&gt;text(&apos;result_info&apos;)-&gt;nullable();</div><div class="line"></div><div class="line">            $table-&gt;timestamps();</div><div class="line">            $table-&gt;softDeletes();</div><div class="line">            $table-&gt;engine = &apos;InnoDB&apos;;</div><div class="line"></div><div class="line">            //说明</div><div class="line">            //1：temp_id和data用于发送模板短信。</div><div class="line">            //2：content用于直接发送短信内容，不使用模板。</div><div class="line">            //3：voice_code用于存储语言验证码code。</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function down()</div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(&apos;laravel_sms&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迁移数据库</p>
+<p><code>php artisan migrate</code></p>
+<p>这样我们就可以很方便的查看日志来排查错误啦</p>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><blockquote>
+<p>laravel-sms 官方文档：<a href="https://github.com/toplan/laravel-sms" target="_blank" rel="external">https://github.com/toplan/laravel-sms</a></p>
+<p>php-sms 官方文档：<a href="https://github.com/toplan/phpsms" target="_blank" rel="external">https://github.com/toplan/phpsms</a></p>
+<p>Artisan 命令行 官方文档：<a href="http://d.laravel-china.org/docs/5.3/artisan#registering-commands" target="_blank" rel="external">http://d.laravel-china.org/docs/5.3/artisan#registering-commands</a> </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/PHPStorm 实现单步跟踪/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/PHPStorm 实现单步跟踪/" itemprop="url">
+                  PHPStorm 实现单步跟踪
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T21:27:49+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IDE-配置/" itemprop="url" rel="index">
+                    <span itemprop="name">IDE 配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/PHPStorm 实现单步跟踪/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/PHPStorm 实现单步跟踪/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近和小伙伴志平在做一个比赛项目，主要用 <code>PHP</code> 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 <code>Visual Studio</code>  那样 <strong><strong>单步跟踪</strong></strong> 的调试，于是我今晚尝试了一下，在 <code>PHPStorm</code> 里配置 <strong>单步跟踪</strong>。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>Homestead</li>
+<li>PHPStorm2017</li>
+<li>PHP7.0</li>
+<li>Chrome</li>
+</ul>
+<h2 id="Homestead中配置Xdebug"><a href="#Homestead中配置Xdebug" class="headerlink" title="Homestead中配置Xdebug"></a>Homestead中配置Xdebug</h2><ol>
+<li>使用 <code>vagrant up</code> 启动你的 <code>Homestead</code> </li>
+<li>命令行下 <code>sudo vi /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> (注意你的 php 版本和对应的文件夹) </li>
+<li><p>复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=xdebug.so</div><div class="line">xdebug.remote_enable = 1</div><div class="line">xdebug.remote_connect_back = 1</div><div class="line">xdebug.remote_port = 9000</div><div class="line">xdebug.scream=0 </div><div class="line">xdebug.cli_color=1</div><div class="line">xdebug.show_local_vars=1</div></pre></td></tr></table></figure>
+</li>
+<li><p>保存这个文件（如果这个文件不存在的话，这样建立一个软连接过来 <code>sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> ），如果你还不明白软连接，可以参考 <a href="http://www.cnblogs.com/kex1n/p/5193826.html" target="_blank" rel="external">软连接</a></p>
+</li>
+<li>重启 <code>php7.0-fpm</code> ：<code>sudo service php7.0-fpm restart</code></li>
+</ol>
+<h2 id="Chorme中安装Xdebug-helper"><a href="#Chorme中安装Xdebug-helper" class="headerlink" title="Chorme中安装Xdebug helper"></a>Chorme中安装Xdebug helper</h2><ol>
+<li>安装chrome扩展 <a href="https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc" target="_blank" rel="external">Xdebug helper</a></li>
+<li>进入 Xdebug hepler 的配置选项中，选择 IDE key 为 PHPStorm<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png" alt="file"></li>
+<li>把扩展调整为 debug 模式，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LycH0ivquM.png" alt="file"></li>
+</ol>
+<h2 id="配置你的PHPStorm"><a href="#配置你的PHPStorm" class="headerlink" title="配置你的PHPStorm"></a>配置你的PHPStorm</h2><ol>
+<li>打开你的 PHPStorm 并设置一个测试断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/DfSFe90Fk9.png" alt="file"></li>
+<li>打开 PHPStorm 中的 右上角小电话，即可开始监听断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/87Tq7A00hv.png" alt="file"></li>
+<li>最后设置一些你的项目目录，就是你的项目目录对应你映射到 Homestead 的目录<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/0MUUXtCCaF.png" alt="file"></li>
+<li>在 PHPStorm 右上角选择刚刚新建的 Server，如图<br><img src="https://ooo.0o0.ooo/2017/04/14/58f06efbe8ef1.gif" alt="file"></li>
+<li>配置你的 Server （比如你想从哪个url开始跟踪）<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LNmgdcRHTI.png" alt="file"></li>
+<li>点击 PHPStorm 右上角小甲虫，你就会发现弹出了个对话框并且已经开始调试了<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/KDhan9m2Ly.png" alt="file"></li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ol>
+<li>好了，如果你看到这里，你的 <code>PHPStorm</code> 应该已经有了 <strong>单步跟踪</strong> 的新功能啦～，让我们来看下效果，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/coiBsigMrk.png" alt="file"></li>
+<li>​就是这么简单的操作～，想要随时随地调试你的页面的小伙伴搞起来啦～。突然想起今天志平要的接口还没完成 :sweat_smile: ，管他呢，睡个好觉先。<br><img src="https://ooo.0o0.ooo/2017/04/14/58f07084810eb.gif" alt="file"></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T21:27:49+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/hello-world/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/使用 GitHub Pages + Hexo 免服务器搭建个人博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/30/使用 GitHub Pages + Hexo 免服务器搭建个人博客/" itemprop="url">
+                  使用 GitHub Pages + Hexo 免服务器搭建个人博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T21:27:49+08:00">
+                2017-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/30/使用 GitHub Pages + Hexo 免服务器搭建个人博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/30/使用 GitHub Pages + Hexo 免服务器搭建个人博客/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="废话不说，先上图"><a href="#废话不说，先上图" class="headerlink" title="废话不说，先上图"></a>废话不说，先上图</h2><p><img src="https://szuhub.linkerlab.net/uploads/images/201704/11/6/7x1AfAZjwu.png" alt="file"></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>很久之前就想搭建一个属于自己的博客，也有人推荐用 <strong>WordPress</strong> 啥的，但是之前也一直抽不出时间来弄，最近参加的比赛暂时过了校赛，闲暇之余，就想起来把博客整一整啦</p>
+<h2 id="GitHub-Pages-是什么"><a href="#GitHub-Pages-是什么" class="headerlink" title="GitHub Pages 是什么"></a>GitHub Pages 是什么</h2><p><strong>GitHub Pages</strong> 是通过在 <strong>GitHub</strong> 网站托管和发布的公开网页，因此是不需要我们搭建服务器的</p>
+<h2 id="Hexo-是什么"><a href="#Hexo-是什么" class="headerlink" title="Hexo 是什么"></a>Hexo 是什么</h2><p><strong>Hexo</strong> 是一个用来生成静态界面的框架，使用 <strong>Hexo</strong>，你就可以直接使用 <strong>Markdown</strong> 来写文章，而不用关心前端样式的展现，想深入研究的同学可以通过 <a href="https://hexo.io/zh-cn/" target="_blank" rel="external">传送门</a> 查看官方中文文档。</p>
+<h2 id="注册-GitHub-并初始化一个-GitHub-Pages-的仓库"><a href="#注册-GitHub-并初始化一个-GitHub-Pages-的仓库" class="headerlink" title="注册 GitHub 并初始化一个 GitHub Pages 的仓库"></a>注册 GitHub 并初始化一个 GitHub Pages 的仓库</h2><p>注册就不多说啦，<strong>GitHub Pages</strong> 的仓库搭建官方文档也说的很明白了，这里就不赘述了，小伙伴可以移步 <a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages 官方文档</a></p>
+<h2 id="克隆项目仓库到本地"><a href="#克隆项目仓库到本地" class="headerlink" title="克隆项目仓库到本地"></a>克隆项目仓库到本地</h2><pre><code>git clone git@github.com:your username/your username.github.io.git
+</code></pre><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>安装 <strong>Hexo</strong> 之前需要安装 <strong>Git</strong>，<strong>Node.js</strong>，<strong>npm</strong>，还没安装的小伙伴请 <a href="https://hexo.io/zh-cn/docs/#安装前提" target="_blank" rel="external">查看安装教程</a></p>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><ol>
+<li><p>进入到你的本地项目文件目录（路径替换成你的项目路径哦）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Code/luozijian.github.io</div></pre></td></tr></table></figure>
+</li>
+<li><p>下载并安装 <strong>Hexo</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>若出现如图所示内容，则表示安装成功<br><img src="https://szuhub.linkerlab.net/uploads/images/201704/10/6/Ten593a6Vi.png" alt="file"></p>
+<h2 id="配置-Hexo"><a href="#配置-Hexo" class="headerlink" title="配置 Hexo"></a>配置 Hexo</h2><ol>
+<li><p>初始化博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 建立一个文件夹，并初始化博客，&lt;folder&gt;为文件夹的名称，可以随便起名字</div><div class="line">$ hexo init &lt;folder&gt;</div><div class="line">// 进入博客文件夹，&lt;folder&gt;为文件夹的名称</div><div class="line">$ cd &lt;folder&gt;</div><div class="line">// node.js的命令，根据博客既定的dependencies配置安装所有的依赖包</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi _config.yml</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>配置基本信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">title: 这是标题</div><div class="line">subtitle: 这是副标题</div><div class="line">description: 这是描述</div><div class="line">author: 作者随便填</div><div class="line">language: zh-CN</div><div class="line">timezone: Asia/Shanghai</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置个人域名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url: http://你的域名</div></pre></td></tr></table></figure>
+</li>
+<li><p>部署 GitHub</p>
+<blockquote>
+<p>注意要部署 GitHub 要先跑这个命令 <code>npm install hexo-deployer-git --save</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:your username/your username.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>简单的一条命令就可以发布到 <strong>GitHub Pages</strong> 啦，注意每次修改你的博客后都要记得发布哦～<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g -d</div></pre></td></tr></table></figure></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p><a href="https://luozijian.github.io/" target="_blank" rel="external">我的博客</a>，想自己搞博客的同学可以搞起啦，不喜欢默认的主题的话还可以去 <a href="https://hexo.io/themes/" target="_blank" rel="external">Hexo 主题</a> 找找自己喜欢的主题哦，如果还有什么问题欢迎在下面评论哦~<br>ps：我的博客用了 <strong>Disqus</strong> 评论插件，但是因为在国内被墙的原因，想要评论或者看别人的评论的小伙伴需要翻墙才能看到哦～</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Luozijian" />
+          <p class="site-author-name" itemprop="name">Luozijian</p>
+           
+              <p class="site-description motion-element" itemprop="description">随笔，学习心得</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luozijian" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/lujexm" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/LuozijianWorld" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/luozijian2017" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/luozijian2017" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.szu.space/" title="张智的个人博客" target="_blank">张智的个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luozijian</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://luozijian.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
