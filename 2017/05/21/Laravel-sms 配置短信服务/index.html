@@ -112,11 +112,11 @@
 <meta name="keywords" content="Laravel,工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Larval-sms + 阿里大鱼 配置定时发送短信服务">
-<meta property="og:url" content="http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/index.html">
+<meta property="og:url" content="http://luozijian.top/2017/05/21/Laravel-sms 配置短信服务/index.html">
 <meta property="og:site_name" content="JUST FOR FUN">
 <meta property="og:description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg">
-<meta property="og:updated_time" content="2017-04-30T14:26:38.000Z">
+<meta property="og:updated_time" content="2017-05-21T16:08:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Larval-sms + 阿里大鱼 配置定时发送短信服务">
 <meta name="twitter:description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
@@ -148,7 +148,7 @@
 
 
 
-  <link rel="canonical" href="http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/"/>
+  <link rel="canonical" href="http://luozijian.top/2017/05/21/Laravel-sms 配置短信服务/"/>
 
 
 
@@ -235,6 +235,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -283,7 +293,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/05/21/Laravel-sms 配置短信服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luozijian">
@@ -319,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T14:26:38+00:00">
-                2017-04-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T16:08:39+00:00">
+                2017-05-22
               </time>
             
 
@@ -360,9 +370,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/30/Laravel-sms 配置短信服务/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/21/Laravel-sms 配置短信服务/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/30/Laravel-sms 配置短信服务/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/21/Laravel-sms 配置短信服务/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,38 +400,38 @@
         <p><img src="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg" alt="file"></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
 <li><p>引入依赖 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer require toplan/laravel-sms:~2.6</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer <span class="keyword">require</span> toplan/laravel-sms:~<span class="number">2.6</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>参数配置 </p>
 <ul>
 <li><p>在config/app.php文件中providers数组里加入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toplan\PhpSms\PhpSmsServiceProvider::class,</div><div class="line">Toplan\Sms\SmsManagerServiceProvider::class,</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toplan\PhpSms\PhpSmsServiceProvider::class,</div><div class="line">Toplan\Sms\SmsManagerServiceProvider::class,</div></pre></td></tr></table></figure>
 </li>
 <li><p>在config/app.php文件中的aliases数组里加入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&apos;PhpSms&apos; =&gt; Toplan\PhpSms\Facades\Sms::class,</div><div class="line">&apos;SmsManager&apos; =&gt; Toplan\Sms\Facades\SmsManager::class,</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'PhpSms'</span> =&gt; Toplan\PhpSms\Facades\Sms::class,</div><div class="line"><span class="string">'SmsManager'</span> =&gt; Toplan\Sms\Facades\SmsManager::class,</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ol>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
 <li><p>修改 <code>config/phpsms.php</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scheme&apos; =&gt; [</div><div class="line">	&apos;Alidayu&apos;,//配置代理器为阿里大鱼</div><div class="line">],</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scheme<span class="string">' =&gt; [</span></div><div class="line">	'Alidayu<span class="string">',//配置代理器为阿里大鱼</span></div><div class="line">],</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改 <code>app/helpers.php</code> ，复制以下内容进去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function sendMessage($mobile,$template_id,$tempData)&#123;</div><div class="line">    $templates = [</div><div class="line">        &apos;Alidayu&apos; =&gt; $template_id//模板id</div><div class="line">    ];</div><div class="line">    Toplan\PhpSms\Sms::make()-&gt;to($mobile)-&gt;template($templates)-&gt;data($tempData)-&gt;send();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span><span class="params">($mobile,$template_id,$tempData)</span></span>&#123;</div><div class="line">    $templates = [</div><div class="line">        <span class="string">'Alidayu'</span> =&gt; $template_id<span class="comment">//模板id</span></div><div class="line">    ];</div><div class="line">    Toplan\PhpSms\Sms::make()-&gt;to($mobile)-&gt;template($templates)-&gt;data($tempData)-&gt;send();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="Artisan-命令行"><a href="#Artisan-命令行" class="headerlink" title="Artisan 命令行"></a>Artisan 命令行</h2><ol>
 <li><p>生成命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:command SendMessage</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:command SendMessage</div></pre></td></tr></table></figure>
 </li>
 <li><p>配置命令</p>
 <p>刚才生成的 <strong>Artisan 命令行</strong> 文件在 <code>app/Console/Commands</code> 目录，我们修改目录下刚刚生成的的 <code>SendMessage.php</code> 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace App\Console\Commands;</div><div class="line"></div><div class="line">use Illuminate\Console\Command;</div><div class="line"></div><div class="line">class SendMessage extends Command</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * The name and signature of the console command.</div><div class="line">     *</div><div class="line">     * @var string</div><div class="line">     */</div><div class="line">    protected $signature = &apos;message:send&apos;;//命令的格式，比如这里命令就是 php artisan message:send</div><div class="line"></div><div class="line">    /**</div><div class="line">     * The console command description.</div><div class="line">     *</div><div class="line">     * @var string</div><div class="line">     */</div><div class="line">    protected $description = &apos;Send message to user&apos;;//命令的描述</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Create a new command instance.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function __construct()</div><div class="line">    &#123;</div><div class="line">        parent::__construct();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Execute the console command.</div><div class="line">     *</div><div class="line">     * @return mixed</div><div class="line">     */</div><div class="line">    public function handle()</div><div class="line">    &#123;</div><div class="line">        //这里处理你的业务逻辑</div><div class="line">        $mobile = 11111111111;//要发送的手机号</div><div class="line">        template_id ＝ 111111;//你的阿里大鱼模板id</div><div class="line">        $tempData = [</div><div class="line">      		&apos;name&apos; =&gt; &apos;123&apos;,//模板变量自定</div><div class="line">    	];</div><div class="line">        sendMessage($mobile,$template_id,$tempData);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Console</span>\<span class="title">Commands</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Console</span>\<span class="title">Command</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SendMessage</span> <span class="keyword">extends</span> <span class="title">Command</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * The name and signature of the console command.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $signature = <span class="string">'message:send'</span>;<span class="comment">//命令的格式，比如这里命令就是 php artisan message:send</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * The console command description.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $description = <span class="string">'Send message to user'</span>;<span class="comment">//命令的描述</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Create a new command instance.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">parent</span>::__construct();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Execute the console command.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> mixed</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">//这里处理你的业务逻辑</span></div><div class="line">        $mobile = <span class="number">11111111111</span>;<span class="comment">//要发送的手机号</span></div><div class="line">        template_id ＝ <span class="number">111111</span>;<span class="comment">//你的阿里大鱼模板id</span></div><div class="line">        $tempData = [</div><div class="line">      		<span class="string">'name'</span> =&gt; <span class="string">'123'</span>,<span class="comment">//模板变量自定</span></div><div class="line">    	];</div><div class="line">        sendMessage($mobile,$template_id,$tempData);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>注册命令</p>
 <p>修改 <code>app/Console/Kernel.php</code> 文件，添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">protected $commands = [</div><div class="line">	Commands\SendMessage::class,</div><div class="line">];</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> $commands = [</div><div class="line">	Commands\SendMessage::class,</div><div class="line">];</div></pre></td></tr></table></figure>
 </li>
 <li><p>确认命令正确生成和配置</p>
 <p>使用 <code>php artisan list</code> 命令，如果能看到 <code>php artisan message:send</code> 说明配置成功</p>
@@ -436,7 +446,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_sms_table --create</div></pre></td></tr></table></figure>
 </li>
 <li><p>复制以下内容进去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">use Illuminate\Database\Migrations\Migration;</div><div class="line">use Illuminate\Database\Schema\Blueprint;</div><div class="line"></div><div class="line">class CreateSmsTable extends Migration</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function up()</div><div class="line">    &#123;</div><div class="line">        Schema::create(&apos;laravel_sms&apos;, function (Blueprint $table) &#123;</div><div class="line">            $table-&gt;increments(&apos;id&apos;);</div><div class="line"></div><div class="line">            //to:用于存储手机号</div><div class="line">            $table-&gt;string(&apos;to&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //temp_id:存储模板标记，用于存储任何第三方服务商提供的短信模板标记/id</div><div class="line">            $table-&gt;string(&apos;temp_id&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //data:模板短信的模板数据，建议json格式</div><div class="line">            $table-&gt;string(&apos;data&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //content:内容</div><div class="line">            $table-&gt;string(&apos;content&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //voice_code:语言验证码code</div><div class="line">            $table-&gt;string(&apos;voice_code&apos;)-&gt;default(&apos;&apos;);</div><div class="line"></div><div class="line">            //发送失败次数</div><div class="line">            $table-&gt;mediumInteger(&apos;fail_times&apos;)-&gt;default(0);</div><div class="line"></div><div class="line">            //最后一次发送失败时间</div><div class="line">            $table-&gt;integer(&apos;last_fail_time&apos;)-&gt;unsigned()-&gt;default(0);</div><div class="line"></div><div class="line">            //发送成功时的时间</div><div class="line">            $table-&gt;integer(&apos;sent_time&apos;)-&gt;unsigned()-&gt;default(0);</div><div class="line"></div><div class="line">            //代理器使用日志，记录每个代理器的发送状态，可用于排错</div><div class="line">            $table-&gt;text(&apos;result_info&apos;)-&gt;nullable();</div><div class="line"></div><div class="line">            $table-&gt;timestamps();</div><div class="line">            $table-&gt;softDeletes();</div><div class="line">            $table-&gt;engine = &apos;InnoDB&apos;;</div><div class="line"></div><div class="line">            //说明</div><div class="line">            //1：temp_id和data用于发送模板短信。</div><div class="line">            //2：content用于直接发送短信内容，不使用模板。</div><div class="line">            //3：voice_code用于存储语言验证码code。</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function down()</div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(&apos;laravel_sms&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Migrations</span>\<span class="title">Migration</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Schema</span>\<span class="title">Blueprint</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateSmsTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'laravel_sms'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);</div><div class="line"></div><div class="line">            <span class="comment">//to:用于存储手机号</span></div><div class="line">            $table-&gt;string(<span class="string">'to'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//temp_id:存储模板标记，用于存储任何第三方服务商提供的短信模板标记/id</span></div><div class="line">            $table-&gt;string(<span class="string">'temp_id'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//data:模板短信的模板数据，建议json格式</span></div><div class="line">            $table-&gt;string(<span class="string">'data'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//content:内容</span></div><div class="line">            $table-&gt;string(<span class="string">'content'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//voice_code:语言验证码code</span></div><div class="line">            $table-&gt;string(<span class="string">'voice_code'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//发送失败次数</span></div><div class="line">            $table-&gt;mediumInteger(<span class="string">'fail_times'</span>)-&gt;default(<span class="number">0</span>);</div><div class="line"></div><div class="line">            <span class="comment">//最后一次发送失败时间</span></div><div class="line">            $table-&gt;integer(<span class="string">'last_fail_time'</span>)-&gt;unsigned()-&gt;default(<span class="number">0</span>);</div><div class="line"></div><div class="line">            <span class="comment">//发送成功时的时间</span></div><div class="line">            $table-&gt;integer(<span class="string">'sent_time'</span>)-&gt;unsigned()-&gt;default(<span class="number">0</span>);</div><div class="line"></div><div class="line">            <span class="comment">//代理器使用日志，记录每个代理器的发送状态，可用于排错</span></div><div class="line">            $table-&gt;text(<span class="string">'result_info'</span>)-&gt;nullable();</div><div class="line"></div><div class="line">            $table-&gt;timestamps();</div><div class="line">            $table-&gt;softDeletes();</div><div class="line">            $table-&gt;engine = <span class="string">'InnoDB'</span>;</div><div class="line"></div><div class="line">            <span class="comment">//说明</span></div><div class="line">            <span class="comment">//1：temp_id和data用于发送模板短信。</span></div><div class="line">            <span class="comment">//2：content用于直接发送短信内容，不使用模板。</span></div><div class="line">            <span class="comment">//3：voice_code用于存储语言验证码code。</span></div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(<span class="string">'laravel_sms'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>迁移数据库</p>
 <p><code>php artisan migrate</code></p>
@@ -444,9 +454,7 @@
 </li>
 </ol>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><blockquote>
-<p>laravel-sms 官方文档：<a href="https://github.com/toplan/laravel-sms" target="_blank" rel="external">https://github.com/toplan/laravel-sms</a></p>
-<p>php-sms 官方文档：<a href="https://github.com/toplan/phpsms" target="_blank" rel="external">https://github.com/toplan/phpsms</a></p>
-<p>Artisan 命令行官方文档：<a href="http://d.laravel-china.org/docs/5.3/artisan#registering-commands" target="_blank" rel="external">http://d.laravel-china.org/docs/5.3/artisan#registering-commands</a></p>
+<p>laravel-sms 官方文档：<a href="https://github.com/toplan/laravel-sms" target="_blank" rel="external">https://github.com/toplan/laravel-sms</a><br>php-sms 官方文档：<a href="https://github.com/toplan/phpsms" target="_blank" rel="external">https://github.com/toplan/phpsms</a><br>Artisan 命令行官方文档：<a href="http://d.laravel-china.org/docs/5.3/artisan#registering-commands" target="_blank" rel="external">http://d.laravel-china.org/docs/5.3/artisan#registering-commands</a></p>
 </blockquote>
 
       
@@ -513,18 +521,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/17/配置 MySQL 远程连接/" rel="next" title="配置 MySQL 远程连接">
-                <i class="fa fa-chevron-left"></i> 配置 MySQL 远程连接
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/30/Laravel 常见问题汇总/" rel="prev" title="Laravel 常见问题汇总">
-                Laravel 常见问题汇总 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/21/Laravel 配置邮件服务/" rel="prev" title="Larval 自带SMTP配置邮件服务">
+                Larval 自带SMTP配置邮件服务 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -604,7 +608,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -881,8 +885,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://luozijian.top/2017/04/30/Laravel-sms 配置短信服务/';
-          this.page.identifier = '2017/04/30/Laravel-sms 配置短信服务/';
+          this.page.url = 'http://luozijian.top/2017/05/21/Laravel-sms 配置短信服务/';
+          this.page.identifier = '2017/05/21/Laravel-sms 配置短信服务/';
           this.page.title = 'Larval-sms + 阿里大鱼 配置定时发送短信服务';
         };
         var d = document, s = d.createElement('script');

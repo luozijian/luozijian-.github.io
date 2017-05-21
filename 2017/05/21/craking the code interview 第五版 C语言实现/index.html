@@ -1,0 +1,941 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="craking the code interview 第五版 C语言实现">
+<meta property="og:url" content="http://luozijian.top/2017/05/21/craking the code interview 第五版 C语言实现/index.html">
+<meta property="og:site_name" content="JUST FOR FUN">
+<meta property="og:description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
+<meta property="og:updated_time" content="2017-05-21T16:03:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="craking the code interview 第五版 C语言实现">
+<meta name="twitter:description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://luozijian.top/2017/05/21/craking the code interview 第五版 C语言实现/"/>
+
+
+
+
+
+  <title>craking the code interview 第五版 C语言实现 | JUST FOR FUN</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST FOR FUN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">罗宝健的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/05/21/craking the code interview 第五版 C语言实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                craking the code interview 第五版 C语言实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T01:50:24+00:00">
+                2017-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/21/craking the code interview 第五版 C语言实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/21/craking the code interview 第五版 C语言实现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="面试考题"><a href="#面试考题" class="headerlink" title="面试考题"></a>面试考题</h1><p>本篇为学习笔记，题目出自 <strong>craking the code interview</strong>，中文译名 <strong>程序员面试经典（第五版）</strong>，用 C/C++ 实现</p>
+<h2 id="一-字符串与数组"><a href="#一-字符串与数组" class="headerlink" title="一. 字符串与数组"></a>一. 字符串与数组</h2><h3 id="1-确定字符互异"><a href="#1-确定字符互异" class="headerlink" title="1. 确定字符互异"></a>1. 确定字符互异</h3><blockquote>
+<p>题目描述：</p>
+<p>请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。</p>
+<p>给定一个string <strong>iniString</strong>，请返回一个bool值,<strong>True</strong>代表所有字符全都不同，<strong>False</strong>代表存在相同的字符。保证字符串中的字符为ASCII字符。字符串的长度小于等于3000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;aeiou&quot; 返回：True</div><div class="line">&gt; &quot;BarackObama&quot; 返回：False</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><p>较差的实现方式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Different &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkDifferent</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(iniString.length() == <span class="number">0</span> || iniString.length() &gt; <span class="number">256</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; iniString.length() - <span class="number">1</span>;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>;j &lt; iniString.length();j++)&#123;</div><div class="line">                <span class="keyword">if</span>(iniString[i] == iniString[j])&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>较优的实现方式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Different &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkDifferent</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(iniString.length() == <span class="number">0</span> || iniString.length() &gt; <span class="number">256</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">bool</span> b[<span class="number">256</span>] = &#123;<span class="literal">true</span>&#125;;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; iniString.length();i++)&#123;</div><div class="line">            <span class="keyword">int</span> c = iniString[i];</div><div class="line">            </div><div class="line">            <span class="keyword">if</span>(b[c] == <span class="literal">true</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            b[c] = <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-原串翻转"><a href="#2-原串翻转" class="headerlink" title="2. 原串翻转"></a>2. 原串翻转</h3><blockquote>
+<p>题目描述：</p>
+<p>请实现一个算法，在不使用额外数据结构和储存空间的情况下，翻转一个给定的字符串(可以使用单个过程变量)。</p>
+<p>给定一个string <strong>iniString</strong>，请返回一个string，为翻转后的字符串。保证字符串的长度小于等于5000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;This is nowcoder&quot;</div><div class="line">&gt; 返回：&quot;redocwon si sihT&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Reverse &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseString</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> end = iniString.length() - <span class="number">1</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> tmp;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(start &lt; end)&#123;</div><div class="line">            tmp = iniString[start]; </div><div class="line">            iniString[start++] = iniString[end];</div><div class="line">            iniString[end--] = tmp;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> iniString;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="3-确定两串乱序同构"><a href="#3-确定两串乱序同构" class="headerlink" title="3. 确定两串乱序同构"></a>3. 确定两串乱序同构</h3><blockquote>
+<p>题目描述</p>
+<p>给定两个字符串，请编写程序，确定其中一个字符串的字符重新排列后，能否变成另一个字符串。这里规定大小写为不同字符，且考虑字符串重点空格。</p>
+<p>给定一个string <strong>stringA</strong>和一个string <strong>stringB</strong>，请返回一个bool，代表两串是否重新排列后可相同。保证两串的长度都小于等于5000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;This is nowcoder&quot;,&quot;is This nowcoder&quot;</div><div class="line">&gt; 返回：true</div><div class="line">&gt; &quot;Here you are&quot;,&quot;Are you here&quot;</div><div class="line">&gt; 返回：false</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Same &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkSam</span><span class="params">(<span class="built_in">string</span> stringA, <span class="built_in">string</span> stringB)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(stringA.length() != stringB.length())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        sort(stringA.begin(),stringA.end());</div><div class="line">        sort(stringB.begin(),stringB.end());</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (stringA == stringB)</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="4-空格替换"><a href="#4-空格替换" class="headerlink" title="4. 空格替换"></a>4. 空格替换</h3><blockquote>
+<p>题目描述</p>
+<p>请编写一个方法，将字符串中的空格全部替换为“%20”。假定该字符串有足够的空间存放新增的字符，并且知道字符串的真实长度(小于等于1000)，同时保证字符串由大小写的英文字母组成。</p>
+<p>给定一个string <strong>iniString</strong> 为原始的串，以及串的长度 int <strong>len</strong>, 返回替换后的string。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;Mr John Smith”,13</div><div class="line">&gt; 返回：&quot;Mr%20John%20Smith&quot;</div><div class="line">&gt; ”Hello  World”,12</div><div class="line">&gt; 返回：”Hello%20%20World”</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Replacement &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">replaceSpace</span><span class="params">(<span class="built_in">string</span> iniString, <span class="keyword">int</span> length)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">string</span> str=<span class="string">""</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)&#123;</div><div class="line">            <span class="keyword">if</span>(iniString[i]==<span class="string">' '</span>)&#123;</div><div class="line">                str += <span class="built_in">string</span>(<span class="string">"%20"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                str += iniString[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> str;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="5-基本字符串压缩"><a href="#5-基本字符串压缩" class="headerlink" title="5. 基本字符串压缩"></a>5. 基本字符串压缩</h3><blockquote>
+<p>题目描述</p>
+<p>利用字符重复出现的次数，编写一个方法，实现基本的字符串压缩功能。比如，字符串“aabcccccaaa”经压缩会变成“a2b1c5a3”。若压缩后的字符串没有变短，则返回原先的字符串。</p>
+<p>给定一个string iniString为待压缩的串(长度小于等于10000)，保证串内字符均由大小写英文字母组成，返回一个string，为所求的压缩后或未变化的串。</p>
+<p>测试样例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;aabcccccaaa&quot;</div><div class="line">&gt; 返回：&quot;a2b1c5a3&quot;</div><div class="line">&gt; &quot;welcometonowcoderrrrr&quot;</div><div class="line">&gt; 返回：&quot;welcometonowcoderrrrr&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Zipper &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">zipString</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">string</span> myStr;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">1</span>,i;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> last = iniString[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; iniString.length();i++)&#123;</div><div class="line">            <span class="keyword">if</span>(last == iniString[i])&#123;</div><div class="line">                count++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                myStr += last + to_string(count);</div><div class="line">                last = iniString[i];</div><div class="line">                count = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">string</span> res = myStr + last + to_string(count);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(res.length() &gt;= iniString.length())&#123;</div><div class="line">            <span class="keyword">return</span> iniString;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="6-像素翻转"><a href="#6-像素翻转" class="headerlink" title="6. 像素翻转"></a>6. 像素翻转</h3><blockquote>
+<p>题目描述</p>
+<p>有一副由NxN矩阵表示的图像，这里每个像素用一个int表示，请编写一个算法，在不占用额外内存空间的情况下(即不使用缓存矩阵)，将图像顺时针旋转90度。</p>
+<p>给定一个NxN的矩阵，和矩阵的阶数N,请返回旋转后的NxN矩阵,保证N小于等于500，图像元素小于等于256。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; [[1,2,3],[4,5,6],[7,8,9]],3</div><div class="line">&gt; 返回：[[7,4,1],[8,5,2],[9,6,3]]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="7-清除行列"><a href="#7-清除行列" class="headerlink" title="7. 清除行列"></a>7. 清除行列</h3><blockquote>
+<p>题目描述</p>
+<p>请编写一个算法，若N阶方阵中某个元素为0，则将其所在的行与列清零。</p>
+<p>给定一个N阶方阵<strong>int[][]</strong>(C++中为vector&gt;)<strong>mat</strong>和矩阵的阶数<strong>n</strong>，请返回完成操作后的<strong>int[][]</strong>方阵(C++中为vector&gt;)，保证n小于等于300，矩阵中的元素为int范围内。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; [[1,2,3],[0,1,2],[0,0,1]]</div><div class="line">&gt; 返回：[[0,0,3],[0,0,0],[0,0,0]]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Clearer &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; clearZero(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; mat, <span class="keyword">int</span> n) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; row(n,<span class="literal">false</span>);</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; column(n,<span class="literal">false</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i &lt; n;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(mat[i][j] == <span class="number">0</span>)&#123;</div><div class="line">                    row[i] = <span class="literal">true</span>;</div><div class="line">                    column[j] = <span class="literal">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(row[i] || column[j])&#123;</div><div class="line">                    mat[i][j] = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> mat;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="8-翻转子串"><a href="#8-翻转子串" class="headerlink" title="8. 翻转子串"></a>8. 翻转子串</h3><blockquote>
+<p>题目描述</p>
+<p>假定我们都知道非常高效的算法来检查一个单词是否为其他字符串的子串。请将这个算法编写成一个函数，给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成，要求只能调用一次检查子串的函数。</p>
+<p>给定两个字符串s1,s2,请返回bool值代表s2是否由s1旋转而成。字符串中字符为英文字母和空格，区分大小写，字符串长度小于等于1000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;Hello world&quot;,&quot;worldhello &quot;</div><div class="line">&gt; 返回：false</div><div class="line">&gt; &quot;waterbottle&quot;,&quot;erbottlewat&quot;</div><div class="line">&gt; 返回：true</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> ReverseEqual &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkReverseEqual</span><span class="params">(<span class="built_in">string</span> s1, <span class="built_in">string</span> s2)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(s1.length() != s2.length())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">string</span> s1s1 = s1 + s1;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(s1s1.find(s2) == <span class="number">-1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="二、链表"><a href="#二、链表" class="headerlink" title="二、链表"></a>二、链表</h2><h3 id="1-链表中倒数第-k-个结点"><a href="#1-链表中倒数第-k-个结点" class="headerlink" title="1. 链表中倒数第 k 个结点"></a>1. 链表中倒数第 k 个结点</h3><blockquote>
+<p>题目描述</p>
+<p>输入一个链表，输出该链表中倒数第k个结点。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">	int val;</div><div class="line">	struct ListNode *next;</div><div class="line">	ListNode(int x) :</div><div class="line">			val(x), next(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">FindKthToTail</span><span class="params">(ListNode* pListHead, <span class="keyword">unsigned</span> <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">   </div><div class="line">        <span class="keyword">if</span>(pListHead == <span class="literal">NULL</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ListNode *p1 = pListHead;</div><div class="line">        ListNode *p2 = pListHead;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= k - <span class="number">1</span>;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">            &#125;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(p2-&gt;next != <span class="literal">NULL</span>)&#123;</div><div class="line">            p1 = p1-&gt;next;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> p1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="2-访问单个节点的删除"><a href="#2-访问单个节点的删除" class="headerlink" title="2. 访问单个节点的删除"></a>2. 访问单个节点的删除</h3><blockquote>
+<p>题目描述</p>
+<p>实现一个算法，删除单向链表中间的某个结点，假定你只能访问该结点。</p>
+<p>给定带删除的节点，请执行删除操作，若该节点为尾节点，返回false，否则返回true</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>喜欢我的文章的话，不如请我大保健</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpeg" alt="Luozijian WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Luozijian Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/21/Laravel 常见问题汇总/" rel="next" title="Laravel 常见问题汇总">
+                <i class="fa fa-chevron-left"></i> Laravel 常见问题汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/17/配置 MySQL 远程连接/" rel="prev" title="配置 MySQL 远程连接">
+                配置 MySQL 远程连接 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Luozijian" />
+          <p class="site-author-name" itemprop="name">Luozijian</p>
+           
+              <p class="site-description motion-element" itemprop="description">随笔，学习心得</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luozijian" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/lujexm" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/LuozijianWorld" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/luozijian2017" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/luozijian2017" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.szu.space/" title="张智的个人博客" target="_blank">张智的个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面试考题"><span class="nav-number">1.</span> <span class="nav-text">面试考题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-字符串与数组"><span class="nav-number">1.1.</span> <span class="nav-text">一. 字符串与数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-确定字符互异"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 确定字符互异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-原串翻转"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 原串翻转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-确定两串乱序同构"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 确定两串乱序同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-空格替换"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 空格替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-基本字符串压缩"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 基本字符串压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-像素翻转"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. 像素翻转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-清除行列"><span class="nav-number">1.1.7.</span> <span class="nav-text">7. 清除行列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-翻转子串"><span class="nav-number">1.1.8.</span> <span class="nav-text">8. 翻转子串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、链表"><span class="nav-number">1.2.</span> <span class="nav-text">二、链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-链表中倒数第-k-个结点"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 链表中倒数第 k 个结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-访问单个节点的删除"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 访问单个节点的删除</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luozijian</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://luozijian.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://luozijian.top/2017/05/21/craking the code interview 第五版 C语言实现/';
+          this.page.identifier = '2017/05/21/craking the code interview 第五版 C语言实现/';
+          this.page.title = 'craking the code interview 第五版 C语言实现';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://luozijian.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
