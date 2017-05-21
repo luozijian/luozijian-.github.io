@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="JUST FOR FUN">
 <meta property="og:description" content="前言作为一个 Laravel 开发者，在部署 Laravel 项目的时候总是会遇到这样那样奇怪的问题，每次遇到都要去 Google，实在是有点麻烦，就想自己整理一篇文章来记录这些常见的问题。 常见问题一：Specified key was too long 在开发 Laravel 的项目时，有时我们需要对数据库进行迁移，可是当我们在别的环境下跑 php artisan migrate 的时候经常会">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/04/14/58f0b033734d8.png">
-<meta property="og:updated_time" content="2017-05-21T15:59:41.000Z">
+<meta property="og:updated_time" content="2017-05-21T16:29:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel 常见问题汇总">
 <meta name="twitter:description" content="前言作为一个 Laravel 开发者，在部署 Laravel 项目的时候总是会遇到这样那样奇怪的问题，每次遇到都要去 Google，实在是有点麻烦，就想自己整理一篇文章来记录这些常见的问题。 常见问题一：Specified key was too long 在开发 Laravel 的项目时，有时我们需要对数据库进行迁移，可是当我们在别的环境下跑 php artisan migrate 的时候经常会">
@@ -329,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T15:59:41+00:00">
-                2017-05-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T16:29:40+00:00">
+                2017-05-22
               </time>
             
 
@@ -402,6 +402,7 @@
 <p>在开发 <strong>Laravel</strong> 的项目时，有时我们需要对数据库进行迁移，可是当我们在别的环境下跑 <code>php artisan migrate</code> 的时候经常会出现以下报错：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[Illuminate\Database\QueryException]</div><div class="line">SQLSTATE[<span class="number">42000</span>]: Syntax error <span class="keyword">or</span> access violation: <span class="number">1071</span> Specified key was too long; max key length is <span class="number">767</span> bytes (SQL: alter table users add unique users_email_unique (email))</div><div class="line"></div><div class="line">[PDOException]</div><div class="line">SQLSTATE[<span class="number">42000</span>]: Syntax error <span class="keyword">or</span> access violation: <span class="number">1071</span> Specified key was too long; max key length is <span class="number">767</span> bytes</div></pre></td></tr></table></figure>
 <p>这时候我们把下面的代码添加到 <code>AppServiceProvider.php</code></p>
+<a id="more"></a>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    Schema::defaultStringLength(<span class="number">191</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="常见问题二：-This-cache-store-does-not-support-tagging"><a href="#常见问题二：-This-cache-store-does-not-support-tagging" class="headerlink" title="常见问题二： This cache store does not support tagging"></a>常见问题二： This cache store does not support tagging</h2><p>有时候我们在项目跑的好好的，突然使用 <code>php artisan migrate</code> 就会出现这个错误。</p>
 <p>准确的说，这不是一个bug，详情可以参考 <a href="https://github.com/Zizaco/entrust/issues/541" target="_blank" rel="external">这里</a>，这是由于使用了 <strong>entrust</strong> 权限管理包导致，解决的话只需要修改 <code>.env</code> 文件，把 <code>CACHE_DRIVER</code> 改成 <code>array</code> 就可以啦。</p>

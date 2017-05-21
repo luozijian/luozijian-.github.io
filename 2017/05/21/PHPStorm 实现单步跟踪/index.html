@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo," />
+  <meta name="keywords" content="工具,PHP," />
 
 
 
@@ -108,17 +108,28 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="Hexo">
+<meta name="description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome">
+<meta name="keywords" content="工具,PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://luozijian.top/2017/04/30/hello-world/index.html">
+<meta property="og:title" content="PHPStorm 实现单步跟踪">
+<meta property="og:url" content="http://luozijian.top/2017/05/21/PHPStorm 实现单步跟踪/index.html">
 <meta property="og:site_name" content="JUST FOR FUN">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-04-30T13:27:49.000Z">
+<meta property="og:description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LycH0ivquM.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/DfSFe90Fk9.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/87Tq7A00hv.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/0MUUXtCCaF.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/14/58f06efbe8ef1.gif">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LNmgdcRHTI.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/KDhan9m2Ly.png">
+<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/coiBsigMrk.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/14/58f07084810eb.gif">
+<meta property="og:updated_time" content="2017-05-21T16:29:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="PHPStorm 实现单步跟踪">
+<meta name="twitter:description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome">
+<meta name="twitter:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png">
 
 
 
@@ -146,13 +157,13 @@
 
 
 
-  <link rel="canonical" href="http://luozijian.top/2017/04/30/hello-world/"/>
+  <link rel="canonical" href="http://luozijian.top/2017/05/21/PHPStorm 实现单步跟踪/"/>
 
 
 
 
 
-  <title>Hello World | JUST FOR FUN</title>
+  <title>PHPStorm 实现单步跟踪 | JUST FOR FUN</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +302,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/04/30/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://luozijian.top/2017/05/21/PHPStorm 实现单步跟踪/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luozijian">
@@ -312,7 +323,7 @@
             
             
               
-                Hello World
+                PHPStorm 实现单步跟踪
               
             
           </h1>
@@ -327,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T13:27:49+00:00">
-                2017-04-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T16:29:40+00:00">
+                2017-05-22
               </time>
             
 
@@ -350,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/IDE-配置/" itemprop="url" rel="index">
+                    <span itemprop="name">IDE 配置</span>
                   </a>
                 </span>
 
@@ -368,9 +379,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/30/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/21/PHPStorm 实现单步跟踪/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/30/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/21/PHPStorm 实现单步跟踪/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -395,15 +406,41 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>最近和小伙伴志平在做一个比赛项目，主要用 <code>PHP</code> 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 <code>Visual Studio</code>  那样 <strong><strong>单步跟踪</strong></strong> 的调试，于是我今晚尝试了一下，在 <code>PHPStorm</code> 里配置 <strong>单步跟踪</strong>。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>Homestead</li>
+<li>PHPStorm2017</li>
+<li>PHP7.0</li>
+<li>Chrome</li>
+</ul>
+<a id="more"></a>
+<h2 id="Homestead中配置Xdebug"><a href="#Homestead中配置Xdebug" class="headerlink" title="Homestead中配置Xdebug"></a>Homestead中配置Xdebug</h2><ol>
+<li>使用 <code>vagrant up</code> 启动你的 <code>Homestead</code> </li>
+<li>命令行下 <code>sudo vi /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> (注意你的 php 版本和对应的文件夹) </li>
+<li><p>复制以下内容进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=xdebug.so</div><div class="line">xdebug.remote_enable = 1</div><div class="line">xdebug.remote_connect_back = 1</div><div class="line">xdebug.remote_port = 9000</div><div class="line">xdebug.scream=0 </div><div class="line">xdebug.cli_color=1</div><div class="line">xdebug.show_local_vars=1</div></pre></td></tr></table></figure>
+</li>
+<li><p>保存这个文件（如果这个文件不存在的话，这样建立一个软连接过来 <code>sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> ），如果你还不明白软连接，可以参考 <a href="http://www.cnblogs.com/kex1n/p/5193826.html" target="_blank" rel="external">软连接</a></p>
+</li>
+<li>重启 <code>php7.0-fpm</code> ：<code>sudo service php7.0-fpm restart</code></li>
+</ol>
+<h2 id="Chorme中安装Xdebug-helper"><a href="#Chorme中安装Xdebug-helper" class="headerlink" title="Chorme中安装Xdebug helper"></a>Chorme中安装Xdebug helper</h2><ol>
+<li>安装chrome扩展 <a href="https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc" target="_blank" rel="external">Xdebug helper</a></li>
+<li>进入 Xdebug hepler 的配置选项中，选择 IDE key 为 PHPStorm<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png" alt="file"></li>
+<li>把扩展调整为 debug 模式，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LycH0ivquM.png" alt="file"></li>
+</ol>
+<h2 id="配置你的PHPStorm"><a href="#配置你的PHPStorm" class="headerlink" title="配置你的PHPStorm"></a>配置你的PHPStorm</h2><ol>
+<li>打开你的 PHPStorm 并设置一个测试断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/DfSFe90Fk9.png" alt="file"></li>
+<li>打开 PHPStorm 中的 右上角小电话，即可开始监听断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/87Tq7A00hv.png" alt="file"></li>
+<li>最后设置一些你的项目目录，就是你的项目目录对应你映射到 Homestead 的目录<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/0MUUXtCCaF.png" alt="file"></li>
+<li>在 PHPStorm 右上角选择刚刚新建的 Server，如图<br><img src="https://ooo.0o0.ooo/2017/04/14/58f06efbe8ef1.gif" alt="file"></li>
+<li>配置你的 Server （比如你想从哪个url开始跟踪）<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LNmgdcRHTI.png" alt="file"></li>
+<li>点击 PHPStorm 右上角小甲虫，你就会发现弹出了个对话框并且已经开始调试了<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/KDhan9m2Ly.png" alt="file"></li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ol>
+<li>好了，如果你看到这里，你的 <code>PHPStorm</code> 应该已经有了 <strong>单步跟踪</strong> 的新功能啦～，让我们来看下效果，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/coiBsigMrk.png" alt="file"></li>
+<li>​就是这么简单的操作～，想要随时随地调试你的页面的小伙伴搞起来啦～。突然想起今天志平要的接口还没完成 :sweat_smile: ，管他呢，睡个好觉先。<br><img src="https://ooo.0o0.ooo/2017/04/14/58f07084810eb.gif" alt="file"></li>
+</ol>
 
       
     </div>
@@ -454,7 +491,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
           
         </div>
       
@@ -467,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/30/使用 GitHub Pages + Hexo 免服务器搭建个人博客/" rel="next" title="使用 GitHub Pages + Hexo 免服务器搭建个人博客">
-                <i class="fa fa-chevron-left"></i> 使用 GitHub Pages + Hexo 免服务器搭建个人博客
+              <a href="/2017/05/21/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -477,8 +516,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/30/PHPStorm 实现单步跟踪/" rel="prev" title="PHPStorm 实现单步跟踪">
-                PHPStorm 实现单步跟踪 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/21/Laravel-sms 配置短信服务/" rel="prev" title="Larval-sms + 阿里大鱼 配置定时发送短信服务">
+                Larval-sms + 阿里大鱼 配置定时发送短信服务 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homestead中配置Xdebug"><span class="nav-number">2.</span> <span class="nav-text">Homestead中配置Xdebug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chorme中安装Xdebug-helper"><span class="nav-number">3.</span> <span class="nav-text">Chorme中安装Xdebug helper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置你的PHPStorm"><span class="nav-number">4.</span> <span class="nav-text">配置你的PHPStorm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
 
           </div>
@@ -835,9 +874,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://luozijian.top/2017/04/30/hello-world/';
-          this.page.identifier = '2017/04/30/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://luozijian.top/2017/05/21/PHPStorm 实现单步跟踪/';
+          this.page.identifier = '2017/05/21/PHPStorm 实现单步跟踪/';
+          this.page.title = 'PHPStorm 实现单步跟踪';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://luozijian.disqus.com/embed.js';

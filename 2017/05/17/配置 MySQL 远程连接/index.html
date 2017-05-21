@@ -115,7 +115,7 @@
 <meta property="og:url" content="http://luozijian.top/2017/05/17/配置 MySQL 远程连接/index.html">
 <meta property="og:site_name" content="JUST FOR FUN">
 <meta property="og:description" content="配置打开 iptables 3306端口  如果你是 CentOS 系列 12iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPTservice iptables save #保存iptables规则  如果你是 Ubuntu/Debian 系列 12iptables -I INPUT 4 -p">
-<meta property="og:updated_time" content="2017-05-17T15:30:09.000Z">
+<meta property="og:updated_time" content="2017-05-21T16:29:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置 MySQL 远程连接">
 <meta name="twitter:description" content="配置打开 iptables 3306端口  如果你是 CentOS 系列 12iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPTservice iptables save #保存iptables规则  如果你是 Ubuntu/Debian 系列 12iptables -I INPUT 4 -p">
@@ -382,6 +382,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT</div><div class="line">iptables-save &gt; /etc/iptables.up.rules #保存iptables规则</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<a id="more"></a>
 <h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><ol>
 <li><p>登录你的远程服务器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@your domain.com</div></pre></td></tr></table></figure>
@@ -478,10 +479,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/30/使用 GitHub Pages + Hexo 免服务器搭建个人博客/" rel="prev" title="使用 GitHub Pages + Hexo 免服务器搭建个人博客">
-                使用 GitHub Pages + Hexo 免服务器搭建个人博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
