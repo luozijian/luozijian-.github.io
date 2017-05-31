@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="工具,PHP," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -108,28 +108,15 @@
 
 
 
-<meta name="description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome">
-<meta name="keywords" content="工具,PHP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="PHPStorm 实现单步跟踪">
-<meta property="og:url" content="http://blog.luozijian.top/2017/05/25/PHPStorm 实现单步跟踪/index.html">
+<meta name="description" content="随笔，学习心得">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JUST FOR FUN">
+<meta property="og:url" content="http://blog.luozijian.top/categories/Mysql/index.html">
 <meta property="og:site_name" content="JUST FOR FUN">
-<meta property="og:description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LycH0ivquM.png">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/DfSFe90Fk9.png">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/87Tq7A00hv.png">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/0MUUXtCCaF.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/14/58f06efbe8ef1.gif">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LNmgdcRHTI.png">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/KDhan9m2Ly.png">
-<meta property="og:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/coiBsigMrk.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/14/58f07084810eb.gif">
-<meta property="og:updated_time" content="2017-05-25T17:02:11.000Z">
+<meta property="og:description" content="随笔，学习心得">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHPStorm 实现单步跟踪">
-<meta name="twitter:description" content="最近和小伙伴志平在做一个比赛项目，主要用 PHP 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 Visual Studio  那样 单步跟踪 的调试，于是我今晚尝试了一下，在 PHPStorm 里配置 单步跟踪。 环境 Homestead PHPStorm2017 PHP7.0 Chrome">
-<meta name="twitter:image" content="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png">
+<meta name="twitter:title" content="JUST FOR FUN">
+<meta name="twitter:description" content="随笔，学习心得">
 
 
 
@@ -157,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.luozijian.top/2017/05/25/PHPStorm 实现单步跟踪/"/>
+  <link rel="canonical" href="http://blog.luozijian.top/categories/Mysql/"/>
 
 
 
 
 
-  <title>PHPStorm 实现单步跟踪 | JUST FOR FUN</title>
+  <title>分类: Mysql | JUST FOR FUN</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -198,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -336,282 +323,47 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/05/25/PHPStorm 实现单步跟踪/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Luozijian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST FOR FUN">
-    </span>
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        Mysql
+        <small>分类</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
+      
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
+            <a class="post-title-link" href="/2017/05/17/配置 MySQL 远程连接/" itemprop="url">
+              
+                <span itemprop="name">配置 MySQL 远程连接</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                PHPStorm 实现单步跟踪
-              
-            
-          </h1>
-        
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T17:02:11+00:00">
-                2017-05-26
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-05-17T14:48:14+08:00"
+              content="2017-05-17" >
+          05-17
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IDE-配置/" itemprop="url" rel="index">
-                    <span itemprop="name">IDE 配置</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a class="cloud-tie-join-count" href="/2017/05/25/PHPStorm 实现单步跟踪/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/05/25/PHPStorm 实现单步跟踪/" class="leancloud_visitors" data-flag-title="PHPStorm 实现单步跟踪">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>最近和小伙伴志平在做一个比赛项目，主要用 <code>PHP</code> 来实现，其中有用到比较复杂的算法（多目标优化），今晚算法出了问题 :sweat:，志平希望能够像大一用 <code>Visual Studio</code>  那样 <strong><strong>单步跟踪</strong></strong> 的调试，于是我今晚尝试了一下，在 <code>PHPStorm</code> 里配置 <strong>单步跟踪</strong>。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
-<li>Homestead</li>
-<li>PHPStorm2017</li>
-<li>PHP7.0</li>
-<li>Chrome</li>
-</ul>
-<a id="more"></a>
-<h2 id="Homestead中配置Xdebug"><a href="#Homestead中配置Xdebug" class="headerlink" title="Homestead中配置Xdebug"></a>Homestead中配置Xdebug</h2><ol>
-<li>使用 <code>vagrant up</code> 启动你的 <code>Homestead</code> </li>
-<li>命令行下 <code>sudo vi /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> (注意你的 php 版本和对应的文件夹) </li>
-<li><p>复制以下内容进去</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=xdebug.so</div><div class="line">xdebug.remote_enable = 1</div><div class="line">xdebug.remote_connect_back = 1</div><div class="line">xdebug.remote_port = 9000</div><div class="line">xdebug.scream=0 </div><div class="line">xdebug.cli_color=1</div><div class="line">xdebug.show_local_vars=1</div></pre></td></tr></table></figure>
-</li>
-<li><p>保存这个文件（如果这个文件不存在的话，这样建立一个软连接过来 <code>sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code> ），如果你还不明白软连接，可以参考 <a href="http://www.cnblogs.com/kex1n/p/5193826.html" target="_blank" rel="external">软连接</a></p>
-</li>
-<li>重启 <code>php7.0-fpm</code> ：<code>sudo service php7.0-fpm restart</code></li>
-</ol>
-<h2 id="Chorme中安装Xdebug-helper"><a href="#Chorme中安装Xdebug-helper" class="headerlink" title="Chorme中安装Xdebug helper"></a>Chorme中安装Xdebug helper</h2><ol>
-<li>安装chrome扩展 <a href="https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc" target="_blank" rel="external">Xdebug helper</a></li>
-<li>进入 Xdebug hepler 的配置选项中，选择 IDE key 为 PHPStorm<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/Nh9EWOsZCZ.png" alt="file"></li>
-<li>把扩展调整为 debug 模式，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LycH0ivquM.png" alt="file"></li>
-</ol>
-<h2 id="配置你的PHPStorm"><a href="#配置你的PHPStorm" class="headerlink" title="配置你的PHPStorm"></a>配置你的PHPStorm</h2><ol>
-<li>打开你的 PHPStorm 并设置一个测试断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/DfSFe90Fk9.png" alt="file"></li>
-<li>打开 PHPStorm 中的 右上角小电话，即可开始监听断点。如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/87Tq7A00hv.png" alt="file"></li>
-<li>最后设置一些你的项目目录，就是你的项目目录对应你映射到 Homestead 的目录<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/0MUUXtCCaF.png" alt="file"></li>
-<li>在 PHPStorm 右上角选择刚刚新建的 Server，如图<br><img src="https://ooo.0o0.ooo/2017/04/14/58f06efbe8ef1.gif" alt="file"></li>
-<li>配置你的 Server （比如你想从哪个url开始跟踪）<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/LNmgdcRHTI.png" alt="file"></li>
-<li>点击 PHPStorm 右上角小甲虫，你就会发现弹出了个对话框并且已经开始调试了<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/KDhan9m2Ly.png" alt="file"></li>
-</ol>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ol>
-<li>好了，如果你看到这里，你的 <code>PHPStorm</code> 应该已经有了 <strong>单步跟踪</strong> 的新功能啦～，让我们来看下效果，如图<br><img src="https://szuhub.linkerlab.net/uploads/images/201703/29/6/coiBsigMrk.png" alt="file"></li>
-<li>​就是这么简单的操作～，想要随时随地调试你的页面的小伙伴搞起来啦～。突然想起今天志平要的接口还没完成 :sweat_smile: ，管他呢，睡个好觉先。<br><img src="https://ooo.0o0.ooo/2017/04/14/58f07084810eb.gif" alt="file"></li>
-</ol>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>喜欢我的文章的话，不如请我大保健</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechat-reward-image.jpeg" alt="Luozijian WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-        <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Luozijian Alipay"/>
-          <p>支付宝打赏</p>
-        </div>
-      
-    </div>
-  </div>
-
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/工具/" rel="tag"># 工具</a>
-          
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/05/31/Laravel 配置邮件服务/" rel="next" title="Laravel 自带SMTP配置邮件服务">
-                <i class="fa fa-chevron-left"></i> Laravel 自带SMTP配置邮件服务
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/25/Laravel-sms 配置短信服务/" rel="prev" title="Larval-sms + 阿里大鱼 配置定时发送短信服务">
-                Larval-sms + 阿里大鱼 配置定时发送短信服务 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
+  
 
-      
-    </div>
-  </div>
 
 
           </div>
@@ -619,12 +371,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-    
-  </div>
-
 
         </div>
         
@@ -644,17 +390,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -782,22 +519,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homestead中配置Xdebug"><span class="nav-number">2.</span> <span class="nav-text">Homestead中配置Xdebug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chorme中安装Xdebug-helper"><span class="nav-number">3.</span> <span class="nav-text">Chorme中安装Xdebug helper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置你的PHPStorm"><span class="nav-number">4.</span> <span class="nav-text">配置你的PHPStorm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -922,10 +643,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
 
   
 
