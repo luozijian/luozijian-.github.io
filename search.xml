@@ -71,17 +71,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F05%2F21%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[配置 MySQL 远程连接]]></title>
     <url>%2F2017%2F05%2F17%2F%E9%85%8D%E7%BD%AE%20MySQL%20%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%2F</url>
     <content type="text"><![CDATA[配置打开 iptables 3306端口 如果你是 CentOS 系列 12iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPTservice iptables save #保存iptables规则 如果你是 Ubuntu/Debian 系列 12iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPTiptables-save &gt; /etc/iptables.up.rules #保存iptables规则 创建用户 登录你的远程服务器 1ssh root@your domain.com 登录 MySQL 1mysql -u root -p 创建用户（用户名不能是root） 1create user 用户名 identified by '密码'; 授权用户 MySQL 5.7 1grant all on 数据库名.* to 用户名 MySQL 5.6 1grant all privileges on 数据库名.* to 用户名@’%’ identified by ‘用户密码’; 如果出现 ERROR 1524 (HY000): Plugin ‘*9E53930467B20A15727780FB02007B379CE21A84’ is not loaded 尝试删除用户在重复以上步骤]]></content>
