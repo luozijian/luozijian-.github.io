@@ -335,7 +335,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/06/09/Homestead 安装:升级/">
+    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/06/10/PHP 单元测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luozijian">
@@ -357,8 +357,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/09/Homestead 安装:升级/" itemprop="url">
-                  Homestead 安装：升级
+                <a class="post-title-link" href="/2017/06/10/PHP 单元测试/" itemprop="url">
+                  PHP 单元测试
                 </a>
               
             
@@ -374,8 +374,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T18:40:15+08:00">
-                2017-06-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T15:48:21+08:00">
+                2017-06-10
               </time>
             
 
@@ -414,7 +414,165 @@
 
           
           
-             <span id="/2017/06/09/Homestead 安装:升级/" class="leancloud_visitors" data-flag-title="Homestead 安装：升级">
+             <span id="/2017/06/10/PHP 单元测试/" class="leancloud_visitors" data-flag-title="PHP 单元测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PHPUnit-中的测试函数命名"><a href="#PHPUnit-中的测试函数命名" class="headerlink" title="PHPUnit 中的测试函数命名"></a>PHPUnit 中的测试函数命名</h2><p>注意函数上方有 <strong>注释</strong>， 函数名使用下划线，相比于 <strong>驼峰法</strong> 的 <strong>PSR-2</strong> 规范，测试中函数可读性比较重要</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** <span class="doctag">@test</span> */</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">it_fetches_trending_articles</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试数据库配置"><a href="#测试数据库配置" class="headerlink" title="测试数据库配置"></a>测试数据库配置</h2><p>我们尽量不使用本来的数据库，另外配置一个测试的数据库</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在 config/database.php 新增以下内容</span></div><div class="line"><span class="string">'sqlite_test'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'sqlite'</span>,</div><div class="line">            <span class="string">'database'</span> =&gt; env(<span class="string">'DB_DATABASE'</span>, database_path(<span class="string">'sqlite_test.sqlite'</span>)),</div><div class="line">            <span class="string">'prefix'</span> =&gt; <span class="string">''</span>,</div><div class="line">        ],</div></pre></td></tr></table></figure>
+<p><img src="http://opy5rss76.bkt.clouddn.com/17-6-10/15037995.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate --database=sqlite_test</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/06/10/Homestead 安装:升级/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/10/Homestead 安装:升级/" itemprop="url">
+                  Homestead 安装：升级
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T02:48:52+08:00">
+                2017-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel 学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/10/Homestead 安装:升级/" class="leancloud_visitors" data-flag-title="Homestead 安装：升级">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -446,9 +604,11 @@
           
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为 <strong>Laravel</strong> 的忠实用户，对于 <strong>Homestead</strong> 这个项目一直情有独钟，虽然现在好像 <strong>docker</strong> 挺流行？但是还没仔细去看，还用着 <strong>Homestead</strong> 凑合吧，最近 <strong>Homestead</strong> 也升级到 2.0 了，今天抽空升级一下因此有了这篇文章</p>
 <h2 id="Homestead"><a href="#Homestead" class="headerlink" title="Homestead"></a>Homestead</h2><ul>
-<li><h4 id="无需部署开发环境"><a href="#无需部署开发环境" class="headerlink" title="无需部署开发环境"></a>无需部署开发环境</h4><p><strong>Laravel Homestead</strong> 是一个官方预封装的 <strong>Vagrant box</strong>，它为你提供了一个完美的开发环境，你无需在本地安装 <strong>PHP</strong> ，<strong>web 服务器</strong>，或其他服务软件。并且不用担心系统被搞乱！ <strong>Vagrant box</strong> 是完全一次性的。如果有什么地方出错了，你也可以在几分钟内销毁并重建 <strong>box</strong> ！</p>
+<li><p>无需部署开发环境</p>
+<p><strong>Laravel Homestead</strong> 是一个官方预封装的 <strong>Vagrant box</strong>，它为你提供了一个完美的开发环境，你无需在本地安装 <strong>PHP</strong> ，<strong>web 服务器</strong>，或其他服务软件。并且不用担心系统被搞乱！ <strong>Vagrant box</strong> 是完全一次性的。如果有什么地方出错了，你也可以在几分钟内销毁并重建 <strong>box</strong> ！</p>
 </li>
-<li><h4 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h4><p><strong>Homestead</strong> 可以运行在 <strong>Windows</strong> 、 <strong>Mac</strong> 或 <strong>Linux</strong> 系统上，并且里面包含了 <strong>Nginx Web</strong> 服务器、 <strong>PHP 7.1</strong> 、 <strong>MySQL</strong> 、 <strong>Postgres</strong> 、 <strong>Redis</strong> 、 <strong>Memcached</strong> 、 <strong>Node</strong> 、 以及所有利于你开发 <strong>laravel</strong> 应用的其他程序。</p>
+<li><p>跨平台</p>
+<p><strong>Homestead</strong> 可以运行在 <strong>Windows</strong> 、 <strong>Mac</strong> 或 <strong>Linux</strong> 系统上，并且里面包含了 <strong>Nginx Web</strong> 服务器、 <strong>PHP 7.1</strong> 、 <strong>MySQL</strong> 、 <strong>Postgres</strong> 、 <strong>Redis</strong> 、 <strong>Memcached</strong> 、 <strong>Node</strong> 、 以及所有利于你开发 <strong>laravel</strong> 应用的其他程序。</p>
 </li>
 </ul>
 <h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><ol>
@@ -517,10 +677,8 @@
 </li>
 <li><p>如果你不小心添加了重复名字的 box，可以使用如下命令删除</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant box remove laravel/homestead --box-version=0</div></pre></td></tr></table></figure>
-</li>
-</ol>
 <p><img src="https://ooo.0o0.ooo/2017/06/09/593a4f59234a8.png" alt="file"></p>
-<ol>
+</li>
 <li><p>如果出现图中错误</p>
 <p><img src="https://ooo.0o0.ooo/2017/06/09/593a4fcd11b46.png" alt="file"></p>
 <p>可以进入 <code>~/.homestead/Vagrantfile</code> 修改</p>
@@ -539,7 +697,41 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git pull origin master</div><div class="line">vagrant box remove laravel/homestead</div><div class="line">vagrant box add ~/homestead/2.0.0/homestead.json</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="七、最后附上我的-after-sh-文件"><a href="#七、最后附上我的-after-sh-文件" class="headerlink" title="七、最后附上我的 after.sh 文件"></a>七、最后附上我的 after.sh 文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line"># If you would like to do some extra provisioning you may</div><div class="line"># add any commands you wish to this file and they will</div><div class="line"># be run after the Homestead machine is provisioned.</div><div class="line"></div><div class="line"># 配置Composer使用中国镜像</div><div class="line">#composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer config -g repo.packagist composer https://packagist.laravel-china.org</div><div class="line"></div><div class="line"></div><div class="line"># 配置npm使用淘宝镜像，使用淘宝镜像有两种方式</div><div class="line"></div><div class="line"># 方式一：只修改npm镜像地址为淘宝镜像地址</div><div class="line">sudo npm config set registry &quot; https://registry.npm.taobao.org &quot;</div><div class="line"></div><div class="line"># 方式二：安装淘宝的cnpm，使用方式和npm一样，只是安装时将npm命令修改为cnpm</div><div class="line"># npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
+<h2 id="七、安装-oh-my-zsh"><a href="#七、安装-oh-my-zsh" class="headerlink" title="七、安装 oh-my-zsh"></a>七、安装 oh-my-zsh</h2><ol>
+<li><p>首先要安装 zsh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改默认 shell，密码是 <code>vagrant</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chsh -s /bin/zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装 oh-my-zsh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div><div class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi ~/.zshrc //ZSH-THEME=&quot;cloud&quot;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="八、附上我的-after-sh-文件"><a href="#八、附上我的-after-sh-文件" class="headerlink" title="八、附上我的 after.sh 文件"></a>八、附上我的 after.sh 文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line"># If you would like to do some extra provisioning you may</div><div class="line"># add any commands you wish to this file and they will</div><div class="line"># be run after the Homestead machine is provisioned.</div><div class="line"></div><div class="line"># 配置Composer使用中国镜像</div><div class="line">#composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer config -g repo.packagist composer https://packagist.laravel-china.org</div><div class="line"></div><div class="line"></div><div class="line"># 配置npm使用淘宝镜像，使用淘宝镜像有两种方式</div><div class="line"></div><div class="line"># 方式一：只修改npm镜像地址为淘宝镜像地址</div><div class="line">sudo npm config set registry &quot; https://registry.npm.taobao.org &quot;</div><div class="line"></div><div class="line"># 方式二：安装淘宝的cnpm，使用方式和npm一样，只是安装时将npm命令修改为cnpm</div><div class="line"># npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
+<h2 id="九、杂七杂八"><a href="#九、杂七杂八" class="headerlink" title="九、杂七杂八"></a>九、杂七杂八</h2><ol>
+<li><p>修改系统时区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 homestead 和 serve 命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">omposer global require &quot;laravel/homestead=~2.0&quot;</div><div class="line">vi ~/.zshrc</div><div class="line">//把以下内容加入</div><div class="line">export PATH=&quot;~/.composer/vendor/bin:$PATH&quot;</div><div class="line">source ~/.bashrc</div><div class="line">//然后执行</div><div class="line">source .zshrc</div></pre></td></tr></table></figure>
+</li>
+<li><p>代码自动提示</p>
+<ul>
+<li><p>安装 auto-suggestions</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone git://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions</div><div class="line">source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 oh-my-zsh 中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</div><div class="line">vi ~/.zshrc</div><div class="line">//加入以下内容</div><div class="line">plugins=(zsh-autosuggestions)</div></pre></td></tr></table></figure>
+<p>最后别忘了 provision 哦</p>
+</li>
+</ul>
+<p>​</p>
+</li>
+</ol>
 
           
         
@@ -703,136 +895,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/06/09/PHP 单元测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Luozijian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST FOR FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/09/PHP 单元测试/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T13:08:01+08:00">
-                2017-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/06/09/PHP 单元测试/" class="leancloud_visitors" data-flag-title="">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
         
       
     </div>
@@ -1378,7 +1440,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/05/25/PHPStorm 实现单步跟踪/">
+    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/05/26/PHPStorm 实现单步跟踪/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luozijian">
@@ -1400,7 +1462,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/25/PHPStorm 实现单步跟踪/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/26/PHPStorm 实现单步跟踪/" itemprop="url">
                   PHPStorm 实现单步跟踪
                 </a>
               
@@ -1457,7 +1519,7 @@
 
           
           
-             <span id="/2017/05/25/PHPStorm 实现单步跟踪/" class="leancloud_visitors" data-flag-title="PHPStorm 实现单步跟踪">
+             <span id="/2017/05/26/PHPStorm 实现单步跟踪/" class="leancloud_visitors" data-flag-title="PHPStorm 实现单步跟踪">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1495,7 +1557,7 @@
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/25/PHPStorm 实现单步跟踪/#more" rel="contents">
+            <a class="btn" href="/2017/05/26/PHPStorm 实现单步跟踪/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1541,7 +1603,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/05/25/Laravel-sms 配置短信服务/">
+    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/05/26/Laravel-sms 配置短信服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luozijian">
@@ -1563,7 +1625,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/25/Laravel-sms 配置短信服务/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/26/Laravel-sms 配置短信服务/" itemprop="url">
                   Larval-sms + 阿里大鱼 配置定时发送短信服务
                 </a>
               
@@ -1620,7 +1682,7 @@
 
           
           
-             <span id="/2017/05/25/Laravel-sms 配置短信服务/" class="leancloud_visitors" data-flag-title="Larval-sms + 阿里大鱼 配置定时发送短信服务">
+             <span id="/2017/05/26/Laravel-sms 配置短信服务/" class="leancloud_visitors" data-flag-title="Larval-sms + 阿里大鱼 配置定时发送短信服务">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1667,7 +1729,7 @@
 </ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/25/Laravel-sms 配置短信服务/#more" rel="contents">
+            <a class="btn" href="/2017/05/26/Laravel-sms 配置短信服务/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

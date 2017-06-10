@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Laravel," />
+  <meta name="keywords" content="Laravel,工具," />
 
 
 
@@ -108,25 +108,19 @@
 
 
 
-<meta name="description" content="前言作为 Laravel 的忠实用户，对于 Homestead 这个项目一直情有独钟，虽然现在好像 docker 挺流行？但是还没仔细去看，还用着 Homestead 凑合吧，最近 Homestead 也升级到 2.0 了，今天抽空升级一下因此有了这篇文章 Homestead 无需部署开发环境Laravel Homestead 是一个官方预封装的 Vagrant box，它为你提供了一个完美的开发">
-<meta name="keywords" content="Laravel">
+<meta name="description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
+<meta name="keywords" content="Laravel,工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Homestead 安装：升级">
-<meta property="og:url" content="http://blog.luozijian.top/2017/06/09/Homestead 安装:升级/index.html">
+<meta property="og:title" content="Larval-sms + 阿里大鱼 配置定时发送短信服务">
+<meta property="og:url" content="http://blog.luozijian.top/2017/05/26/Laravel-sms 配置短信服务/index.html">
 <meta property="og:site_name" content="JUST FOR FUN">
-<meta property="og:description" content="前言作为 Laravel 的忠实用户，对于 Homestead 这个项目一直情有独钟，虽然现在好像 docker 挺流行？但是还没仔细去看，还用着 Homestead 凑合吧，最近 Homestead 也升级到 2.0 了，今天抽空升级一下因此有了这篇文章 Homestead 无需部署开发环境Laravel Homestead 是一个官方预封装的 Vagrant box，它为你提供了一个完美的开发">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/09/593a37f916b93.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/09/593a40824e092.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/09/593a4e8fa9081.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/09/593a4f59234a8.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/09/593a4fcd11b46.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/09/593a50898a741.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/09/593a58882c2fb.png">
-<meta property="og:updated_time" content="2017-06-09T10:40:15.000Z">
+<meta property="og:description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg">
+<meta property="og:updated_time" content="2017-05-25T17:01:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Homestead 安装：升级">
-<meta name="twitter:description" content="前言作为 Laravel 的忠实用户，对于 Homestead 这个项目一直情有独钟，虽然现在好像 docker 挺流行？但是还没仔细去看，还用着 Homestead 凑合吧，最近 Homestead 也升级到 2.0 了，今天抽空升级一下因此有了这篇文章 Homestead 无需部署开发环境Laravel Homestead 是一个官方预封装的 Vagrant box，它为你提供了一个完美的开发">
-<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/06/09/593a37f916b93.png">
+<meta name="twitter:title" content="Larval-sms + 阿里大鱼 配置定时发送短信服务">
+<meta name="twitter:description" content="安装 引入依赖  1composer require toplan/laravel-sms:~2.6  参数配置   在config/app.php文件中providers数组里加入： 12Toplan\PhpSms\PhpSmsServiceProvider::class,Toplan\Sms\SmsManagerServiceProvider::class,  在config/app.php">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg">
 
 
 
@@ -154,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.luozijian.top/2017/06/09/Homestead 安装:升级/"/>
+  <link rel="canonical" href="http://blog.luozijian.top/2017/05/26/Laravel-sms 配置短信服务/"/>
 
 
 
 
 
-  <title>Homestead 安装：升级 | JUST FOR FUN</title>
+  <title>Larval-sms + 阿里大鱼 配置定时发送短信服务 | JUST FOR FUN</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -343,7 +337,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/06/09/Homestead 安装:升级/">
+    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/05/26/Laravel-sms 配置短信服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luozijian">
@@ -364,7 +358,7 @@
             
             
               
-                Homestead 安装：升级
+                Larval-sms + 阿里大鱼 配置定时发送短信服务
               
             
           </h1>
@@ -379,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T18:40:15+08:00">
-                2017-06-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-26T01:01:21+08:00">
+                2017-05-26
               </time>
             
 
@@ -420,7 +414,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/09/Homestead 安装:升级/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/05/26/Laravel-sms 配置短信服务/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -429,7 +423,7 @@
 
           
           
-             <span id="/2017/06/09/Homestead 安装:升级/" class="leancloud_visitors" data-flag-title="Homestead 安装：升级">
+             <span id="/2017/05/26/Laravel-sms 配置短信服务/" class="leancloud_visitors" data-flag-title="Larval-sms + 阿里大鱼 配置定时发送短信服务">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -457,102 +451,66 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为 <strong>Laravel</strong> 的忠实用户，对于 <strong>Homestead</strong> 这个项目一直情有独钟，虽然现在好像 <strong>docker</strong> 挺流行？但是还没仔细去看，还用着 <strong>Homestead</strong> 凑合吧，最近 <strong>Homestead</strong> 也升级到 2.0 了，今天抽空升级一下因此有了这篇文章</p>
-<h2 id="Homestead"><a href="#Homestead" class="headerlink" title="Homestead"></a>Homestead</h2><ul>
-<li><h4 id="无需部署开发环境"><a href="#无需部署开发环境" class="headerlink" title="无需部署开发环境"></a>无需部署开发环境</h4><p><strong>Laravel Homestead</strong> 是一个官方预封装的 <strong>Vagrant box</strong>，它为你提供了一个完美的开发环境，你无需在本地安装 <strong>PHP</strong> ，<strong>web 服务器</strong>，或其他服务软件。并且不用担心系统被搞乱！ <strong>Vagrant box</strong> 是完全一次性的。如果有什么地方出错了，你也可以在几分钟内销毁并重建 <strong>box</strong> ！</p>
+        <p><img src="https://ooo.0o0.ooo/2017/04/20/58f8d20715fc4.jpeg" alt="file"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>引入依赖 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer <span class="keyword">require</span> toplan/laravel-sms:~<span class="number">2.6</span></div></pre></td></tr></table></figure>
 </li>
-<li><h4 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h4><p><strong>Homestead</strong> 可以运行在 <strong>Windows</strong> 、 <strong>Mac</strong> 或 <strong>Linux</strong> 系统上，并且里面包含了 <strong>Nginx Web</strong> 服务器、 <strong>PHP 7.1</strong> 、 <strong>MySQL</strong> 、 <strong>Postgres</strong> 、 <strong>Redis</strong> 、 <strong>Memcached</strong> 、 <strong>Node</strong> 、 以及所有利于你开发 <strong>laravel</strong> 应用的其他程序。</p>
-</li>
-</ul>
-<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><ol>
-<li>安装 <strong><a href="https://git-scm.com/" target="_blank" rel="external">Git</a></strong></li>
-<li>安装 <strong><a href="https://www.vagrantup.com/" target="_blank" rel="external">vagrant</a></strong></li>
-<li>安装 <strong><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">Virtualbox</a></strong></li>
-<li>安装 <strong><a href="http://vagrantmanager.com/" target="_blank" rel="external">vagrant manager</a></strong></li>
-</ol>
-<h2 id="二、导入-box"><a href="#二、导入-box" class="headerlink" title="二、导入 box"></a>二、导入 box</h2><blockquote>
-<p>按照官方文档说明，只需要跑这个命令就可以 <code>vagrant box add laravel/homestead</code>，但是因为国内的网络原因，你懂的，我们需要先下载好 box 再进行导入</p>
-</blockquote>
-<ol>
-<li><p>随你喜欢的地方新建 <code>homestead</code> 文件夹，把下载好的 box 放里面</p>
-<p><img src="https://ooo.0o0.ooo/2017/06/09/593a37f916b93.png" alt="file"></p>
-</li>
-<li><p>导入</p>
+<li><p>参数配置 </p>
 <ul>
-<li><p>新建 <code>homestead.json</code> 文件，将以下内容复制进去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot;: &quot;laravel/homestead&quot;,</div><div class="line">    &quot;versions&quot;: [&#123;</div><div class="line">        &quot;version&quot;: &quot;2.0.0&quot;,</div><div class="line">        &quot;providers&quot;: [&#123;</div><div class="line">            &quot;name&quot;: &quot;virtualbox&quot;,</div><div class="line">            &quot;url&quot;: &quot;~/homestead/2.0.0/virtualbox.box&quot;//注意路径要和你本地的路径对应</div><div class="line">        &#125;]</div><div class="line">    &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><p>在config/app.php文件中providers数组里加入：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toplan\PhpSms\PhpSmsServiceProvider::class,</div><div class="line">Toplan\Sms\SmsManagerServiceProvider::class,</div></pre></td></tr></table></figure>
 </li>
-<li><p>通过 json 文件导入</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant box add ~/homestead/<span class="number">2.0</span>.<span class="number">0</span>/homestead.json</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>使用 <code>vagrant box list</code> 查看是否导入成功</p>
-<p><img src="https://ooo.0o0.ooo/2017/06/09/593a40824e092.png" alt="file"></p>
-</li>
-</ol>
-<h2 id="三、下载-Homestead-配置"><a href="#三、下载-Homestead-配置" class="headerlink" title="三、下载 Homestead 配置"></a>三、下载 Homestead 配置</h2><ol>
-<li><p>在你喜欢的地方（我的在 Code 文件夹）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//第一次安装</div><div class="line">git clone https://github.com/laravel/homestead.git Homestead</div><div class="line">//如果你是更新 Homestead 跑下面这个命令就可以了</div><div class="line">git pull origin master</div></pre></td></tr></table></figure>
-</li>
-<li><p>初始化 Homestead</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd Homestead</div><div class="line">bash init.sh//如果你是更新的话，不要覆盖掉你的 Homestead.yaml 和 alias after.sh 等文件</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="四、配置-Homestead-yaml"><a href="#四、配置-Homestead-yaml" class="headerlink" title="四、配置 Homestead.yaml"></a>四、配置 Homestead.yaml</h2><ol>
-<li><p>打开 <code>~/.homestead/Homestead.yaml</code> 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi Homstead.yaml</div></pre></td></tr></table></figure>
-</li>
-<li><p>配置ip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ip : &quot;192.168.10.10&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>映射文件夹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">folders:</div><div class="line">	- map: ~/Code  #（你本机文件夹）</div><div class="line">  	  to: /home/vagrant/Code</div></pre></td></tr></table></figure>
-</li>
-<li><p>nginx 虚拟站点配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sites:</div><div class="line">	- map: example.com  //域名</div><div class="line">	  to: /home/vagrant/Code/Laravel/public //项目入口文件</div></pre></td></tr></table></figure>
-</li>
-<li><p>同时需要修改 <code>/etc/host</code> 文件确保你设置的 ip 和 域名一一对应</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">192.168.10.10	homestead.app</div><div class="line">192.168.10.10	example.com</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="五、启动"><a href="#五、启动" class="headerlink" title="五、启动"></a>五、启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~/Code/Homestead</div><div class="line">vagrant up</div><div class="line">vagrant ssh</div></pre></td></tr></table></figure>
-<h2 id="六、启动时可能出现如下问题"><a href="#六、启动时可能出现如下问题" class="headerlink" title="六、启动时可能出现如下问题"></a>六、启动时可能出现如下问题</h2><ol>
-<li><p>ssh验证失败</p>
-<ul>
-<li><p>那么我们看看如果没有ssh key的话，先使用如下命令生成 ssh 的 key    </p>
-<figure class="highlight plain"><figcaption><span>-t rsa -C &quot;your name@homestead&quot; </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;your name@homestead&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果已经有了 ssh key 还是不行的话，看看 <code>~/.homestead/Homstead.yaml</code> 是否配置正确</p>
-<p><img src="https://ooo.0o0.ooo/2017/06/09/593a4e8fa9081.png" alt="file"></p>
+<li><p>在config/app.php文件中的aliases数组里加入：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'PhpSms'</span> =&gt; Toplan\PhpSms\Facades\Sms::class,</div><div class="line"><span class="string">'SmsManager'</span> =&gt; Toplan\Sms\Facades\SmsManager::class,</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p>如果你不小心添加了重复名字的 box，可以使用如下命令删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant box remove laravel/homestead --box-version=0</div></pre></td></tr></table></figure>
+</ol>
+<a id="more"></a>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><p>修改 <code>config/phpsms.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scheme<span class="string">' =&gt; [</span></div><div class="line">	'Alidayu<span class="string">',//配置代理器为阿里大鱼</span></div><div class="line">],</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>app/helpers.php</code> ，复制以下内容进去</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span><span class="params">($mobile,$template_id,$tempData)</span></span>&#123;</div><div class="line">    $templates = [</div><div class="line">        <span class="string">'Alidayu'</span> =&gt; $template_id<span class="comment">//模板id</span></div><div class="line">    ];</div><div class="line">    Toplan\PhpSms\Sms::make()-&gt;to($mobile)-&gt;template($templates)-&gt;data($tempData)-&gt;send();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><img src="https://ooo.0o0.ooo/2017/06/09/593a4f59234a8.png" alt="file"></p>
+<h2 id="Artisan-命令行"><a href="#Artisan-命令行" class="headerlink" title="Artisan 命令行"></a>Artisan 命令行</h2><ol>
+<li><p>生成命令</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:command SendMessage</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置命令</p>
+<p>刚才生成的 <strong>Artisan 命令行</strong> 文件在 <code>app/Console/Commands</code> 目录，我们修改目录下刚刚生成的的 <code>SendMessage.php</code> 文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Console</span>\<span class="title">Commands</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Console</span>\<span class="title">Command</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SendMessage</span> <span class="keyword">extends</span> <span class="title">Command</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * The name and signature of the console command.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $signature = <span class="string">'message:send'</span>;<span class="comment">//命令的格式，比如这里命令就是 php artisan message:send</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * The console command description.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $description = <span class="string">'Send message to user'</span>;<span class="comment">//命令的描述</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Create a new command instance.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">parent</span>::__construct();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Execute the console command.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> mixed</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">//这里处理你的业务逻辑</span></div><div class="line">        $mobile = <span class="number">11111111111</span>;<span class="comment">//要发送的手机号</span></div><div class="line">        template_id ＝ <span class="number">111111</span>;<span class="comment">//你的阿里大鱼模板id</span></div><div class="line">        $tempData = [</div><div class="line">      		<span class="string">'name'</span> =&gt; <span class="string">'123'</span>,<span class="comment">//模板变量自定</span></div><div class="line">    	];</div><div class="line">        sendMessage($mobile,$template_id,$tempData);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注册命令</p>
+<p>修改 <code>app/Console/Kernel.php</code> 文件，添加以下内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> $commands = [</div><div class="line">	Commands\SendMessage::class,</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+<li><p>确认命令正确生成和配置</p>
+<p>使用 <code>php artisan list</code> 命令，如果能看到 <code>php artisan message:send</code> 说明配置成功</p>
+</li>
+</ol>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>在你的服务器（linux）使用 <code>crontab -e</code>，添加以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* * 1 * * <span class="built_in">cd</span> 你的项目根目录 &amp;&amp; php artisan message:send</div></pre></td></tr></table></figure>
+<p>这是每天执行一次的定时任务，如果你还不明白定时任务怎么使用，请查看 <a href="http://www.jb51.net/LINUXjishu/19905.html" target="_blank" rel="external">定时任务用法例子</a></p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>为了方便我们排查错误，我们在数据库创建一个日志表 <code>laravel-sms</code></p>
 <ol>
-<li><p>如果出现图中错误</p>
-<p><img src="https://ooo.0o0.ooo/2017/06/09/593a4fcd11b46.png" alt="file"></p>
-<p>可以进入 <code>~/.homestead/Vagrantfile</code> 修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">config.vm.box = &quot;laravel/homestead&quot;</div></pre></td></tr></table></figure>
+<li><p>创建 <code>migration</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_sms_table --create</div></pre></td></tr></table></figure>
 </li>
-<li><p>如果出现图中错误，你就得考虑你是不是把 <code>.homestead</code> 文件夹和 <code>Homestead</code> 文件夹搞混了，解决办法就是，进入 <code>~/.homestead</code> 目录，使用 <code>vagrant destroy</code> 命令销毁 homestead，然后进入 <code>~/Code/Homestead</code> 目录使用 <code>vagrant up</code> 命令即可</p>
-<p>其原理就是，<code>.homestead</code> 目录一般是用于配置我们的 Homestead 的，比如 <code>Homestead.yaml</code>，<code>after.sh</code>，<code>aliases</code> 等文件在这里配置，而 <code>vagrant</code> 命令一般在 <code>Homestead</code> 目录下使用，不要搞错了哦</p>
-<blockquote>
-<p>对了，Homestead2.0 版本已经可以取消 .homestead 文件夹了，原来的文件转移到 ~/Code/Homestead 里面了，可以把 .homestead 文件夹干掉了，以避免搞混</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/09/593a50898a741.png" alt="file"></p>
+<li><p>复制以下内容进去</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Migrations</span>\<span class="title">Migration</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Schema</span>\<span class="title">Blueprint</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateSmsTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'laravel_sms'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);</div><div class="line"></div><div class="line">            <span class="comment">//to:用于存储手机号</span></div><div class="line">            $table-&gt;string(<span class="string">'to'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//temp_id:存储模板标记，用于存储任何第三方服务商提供的短信模板标记/id</span></div><div class="line">            $table-&gt;string(<span class="string">'temp_id'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//data:模板短信的模板数据，建议json格式</span></div><div class="line">            $table-&gt;string(<span class="string">'data'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//content:内容</span></div><div class="line">            $table-&gt;string(<span class="string">'content'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//voice_code:语言验证码code</span></div><div class="line">            $table-&gt;string(<span class="string">'voice_code'</span>)-&gt;default(<span class="string">''</span>);</div><div class="line"></div><div class="line">            <span class="comment">//发送失败次数</span></div><div class="line">            $table-&gt;mediumInteger(<span class="string">'fail_times'</span>)-&gt;default(<span class="number">0</span>);</div><div class="line"></div><div class="line">            <span class="comment">//最后一次发送失败时间</span></div><div class="line">            $table-&gt;integer(<span class="string">'last_fail_time'</span>)-&gt;unsigned()-&gt;default(<span class="number">0</span>);</div><div class="line"></div><div class="line">            <span class="comment">//发送成功时的时间</span></div><div class="line">            $table-&gt;integer(<span class="string">'sent_time'</span>)-&gt;unsigned()-&gt;default(<span class="number">0</span>);</div><div class="line"></div><div class="line">            <span class="comment">//代理器使用日志，记录每个代理器的发送状态，可用于排错</span></div><div class="line">            $table-&gt;text(<span class="string">'result_info'</span>)-&gt;nullable();</div><div class="line"></div><div class="line">            $table-&gt;timestamps();</div><div class="line">            $table-&gt;softDeletes();</div><div class="line">            $table-&gt;engine = <span class="string">'InnoDB'</span>;</div><div class="line"></div><div class="line">            <span class="comment">//说明</span></div><div class="line">            <span class="comment">//1：temp_id和data用于发送模板短信。</span></div><div class="line">            <span class="comment">//2：content用于直接发送短信内容，不使用模板。</span></div><div class="line">            <span class="comment">//3：voice_code用于存储语言验证码code。</span></div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::dropIfExists(<span class="string">'laravel_sms'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>如果你在升级完成后，使用 <code>vagrant up</code> 命令出现如下错误</p>
-<p><img src="https://ooo.0o0.ooo/2017/06/09/593a58882c2fb.png" alt="file"></p>
-<p>这时尝试重新安装一遍</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git pull origin master</div><div class="line">vagrant box remove laravel/homestead</div><div class="line">vagrant box add ~/homestead/2.0.0/homestead.json</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
+<li><p>迁移数据库</p>
+<p><code>php artisan migrate</code></p>
+<p>这样我们就可以很方便的查看日志来排查错误啦</p>
 </li>
 </ol>
-<h2 id="七、最后附上我的-after-sh-文件"><a href="#七、最后附上我的-after-sh-文件" class="headerlink" title="七、最后附上我的 after.sh 文件"></a>七、最后附上我的 after.sh 文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line"># If you would like to do some extra provisioning you may</div><div class="line"># add any commands you wish to this file and they will</div><div class="line"># be run after the Homestead machine is provisioned.</div><div class="line"></div><div class="line"># 配置Composer使用中国镜像</div><div class="line">#composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer config -g repo.packagist composer https://packagist.laravel-china.org</div><div class="line"></div><div class="line"></div><div class="line"># 配置npm使用淘宝镜像，使用淘宝镜像有两种方式</div><div class="line"></div><div class="line"># 方式一：只修改npm镜像地址为淘宝镜像地址</div><div class="line">sudo npm config set registry &quot; https://registry.npm.taobao.org &quot;</div><div class="line"></div><div class="line"># 方式二：安装淘宝的cnpm，使用方式和npm一样，只是安装时将npm命令修改为cnpm</div><div class="line"># npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><blockquote>
+<p>laravel-sms 官方文档：<a href="https://github.com/toplan/laravel-sms" target="_blank" rel="external">https://github.com/toplan/laravel-sms</a><br>php-sms 官方文档：<a href="https://github.com/toplan/phpsms" target="_blank" rel="external">https://github.com/toplan/phpsms</a><br>Artisan 命令行官方文档：<a href="http://d.laravel-china.org/docs/5.3/artisan#registering-commands" target="_blank" rel="external">http://d.laravel-china.org/docs/5.3/artisan#registering-commands</a></p>
+</blockquote>
 
       
     </div>
@@ -605,6 +563,8 @@
           
             <a href="/tags/Laravel/" rel="tag"># Laravel</a>
           
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
         </div>
       
 
@@ -616,14 +576,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/05/26/PHPStorm 实现单步跟踪/" rel="next" title="PHPStorm 实现单步跟踪">
+                <i class="fa fa-chevron-left"></i> PHPStorm 实现单步跟踪
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/09/Laravel 常见问题汇总/" rel="prev" title="Laravel 常见问题汇总">
-                Laravel 常见问题汇总 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/17/配置 MySQL 远程连接/" rel="prev" title="配置 MySQL 远程连接">
+                配置 MySQL 远程连接 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -843,7 +807,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homestead"><span class="nav-number">2.</span> <span class="nav-text">Homestead</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无需部署开发环境"><span class="nav-number">2.0.1.</span> <span class="nav-text">无需部署开发环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跨平台"><span class="nav-number">2.0.2.</span> <span class="nav-text">跨平台</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、准备工作"><span class="nav-number">3.</span> <span class="nav-text">一、准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、导入-box"><span class="nav-number">4.</span> <span class="nav-text">二、导入 box</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、下载-Homestead-配置"><span class="nav-number">5.</span> <span class="nav-text">三、下载 Homestead 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置-Homestead-yaml"><span class="nav-number">6.</span> <span class="nav-text">四、配置 Homestead.yaml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、启动"><span class="nav-number">7.</span> <span class="nav-text">五、启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、启动时可能出现如下问题"><span class="nav-number">8.</span> <span class="nav-text">六、启动时可能出现如下问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、最后附上我的-after-sh-文件"><span class="nav-number">9.</span> <span class="nav-text">七、最后附上我的 after.sh 文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Artisan-命令行"><span class="nav-number">3.</span> <span class="nav-text">Artisan 命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">4.</span> <span class="nav-text">定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug"><span class="nav-number">5.</span> <span class="nav-text">Debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>
