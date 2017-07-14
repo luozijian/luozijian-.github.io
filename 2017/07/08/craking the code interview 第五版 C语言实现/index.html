@@ -112,10 +112,10 @@
 <meta name="keywords" content="基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="craking the code interview 第五版 C语言实现">
-<meta property="og:url" content="http://blog.luozijian.top/2017/06/15/craking the code interview 第五版 C语言实现/index.html">
+<meta property="og:url" content="http://blog.luozijian.top/2017/07/08/craking the code interview 第五版 C语言实现/index.html">
 <meta property="og:site_name" content="JUST FOR FUN">
 <meta property="og:description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
-<meta property="og:updated_time" content="2017-06-15T04:50:39.000Z">
+<meta property="og:updated_time" content="2017-07-08T14:07:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="craking the code interview 第五版 C语言实现">
 <meta name="twitter:description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
@@ -146,7 +146,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.luozijian.top/2017/06/15/craking the code interview 第五版 C语言实现/"/>
+  <link rel="canonical" href="http://blog.luozijian.top/2017/07/08/craking the code interview 第五版 C语言实现/"/>
 
 
 
@@ -335,7 +335,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/06/15/craking the code interview 第五版 C语言实现/">
+    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/07/08/craking the code interview 第五版 C语言实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Luozijian">
@@ -371,8 +371,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T12:50:39+08:00">
-                2017-06-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-08T22:07:53+08:00">
+                2017-07-08
               </time>
             
 
@@ -412,7 +412,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/15/craking the code interview 第五版 C语言实现/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/07/08/craking the code interview 第五版 C语言实现/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -421,7 +421,7 @@
 
           
           
-             <span id="/2017/06/15/craking the code interview 第五版 C语言实现/" class="leancloud_visitors" data-flag-title="craking the code interview 第五版 C语言实现">
+             <span id="/2017/07/08/craking the code interview 第五版 C语言实现/" class="leancloud_visitors" data-flag-title="craking the code interview 第五版 C语言实现">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -529,7 +529,7 @@
 <p>题目描述</p>
 <p>输入一个链表，输出该链表中倒数第k个结点。</p>
 </blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">	int val;</div><div class="line">	struct ListNode *next;</div><div class="line">	ListNode(int x) :</div><div class="line">			val(x), next(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">FindKthToTail</span><span class="params">(ListNode* pListHead, <span class="keyword">unsigned</span> <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">   </div><div class="line">        <span class="keyword">if</span>(pListHead == <span class="literal">NULL</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">      <span class="comment">//双指针</span></div><div class="line">        ListNode *p1 = pListHead;</div><div class="line">        ListNode *p2 = pListHead;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= k - <span class="number">1</span>;i++)&#123;</div><div class="line">          <span class="comment">//p2先向前移动k位</span></div><div class="line">            <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">            &#125;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(p2-&gt;next != <span class="literal">NULL</span>)&#123;</div><div class="line">          <span class="comment">//p1 p2同时移动，当p2到达</span></div><div class="line">            p1 = p1-&gt;next;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> p1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">	int val;</div><div class="line">	struct ListNode *next;</div><div class="line">	ListNode(int x) :</div><div class="line">			val(x), next(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">FindKthToTail</span><span class="params">(ListNode* pListHead, <span class="keyword">unsigned</span> <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">   </div><div class="line">        <span class="keyword">if</span>(pListHead == <span class="literal">NULL</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">      <span class="comment">//双指针</span></div><div class="line">        ListNode *p1 = pListHead;</div><div class="line">        ListNode *p2 = pListHead;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= k;i++)&#123;</div><div class="line">          <span class="comment">//p2先向前移动k位</span></div><div class="line">            <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">            &#125;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;</div><div class="line">       </div><div class="line">        <span class="keyword">while</span>(p2 != <span class="literal">NULL</span>)&#123;</div><div class="line">          <span class="comment">//p1 p2同时移动，当p2到达</span></div><div class="line">            p1 = p1-&gt;next;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;   </div><div class="line">        <span class="keyword">return</span> p1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="2-访问单个节点的删除"><a href="#2-访问单个节点的删除" class="headerlink" title="2. 访问单个节点的删除"></a>2. 访问单个节点的删除</h3><blockquote>
 <p>题目描述</p>
 <p>实现一个算法，删除单向链表中间的某个结点，假定你只能访问该结点。</p>
@@ -700,18 +700,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/16/PHP 单元测试/" rel="next" title="PHP 单元测试">
-                <i class="fa fa-chevron-left"></i> PHP 单元测试
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/14/Homestead 安装:升级/" rel="prev" title="Homestead 安装：升级">
-                Homestead 安装：升级 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/04/Laravel 常见问题汇总/" rel="prev" title="Laravel 常见问题汇总">
+                Laravel 常见问题汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1008,8 +1004,6 @@
   
 
 
-  
-
 
 
 
@@ -1037,9 +1031,6 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
