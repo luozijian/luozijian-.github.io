@@ -1,0 +1,1571 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
+<meta name="keywords" content="基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="craking the code interview 第五版 C++实现">
+<meta property="og:url" content="http://blog.luozijian.top/2017/07/30/craking the code interview 第五版 C++实现/index.html">
+<meta property="og:site_name" content="JUST FOR FUN">
+<meta property="og:description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
+<meta property="og:updated_time" content="2017-07-30T16:18:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="craking the code interview 第五版 C++实现">
+<meta name="twitter:description" content="[TOC] 面试考题本篇为学习笔记，题目出自 craking the code interview，中文译名 程序员面试经典（第五版），用 C/C++ 实现 一. 字符串与数组1. 确定字符互异 题目描述： 请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。 给定一个string iniString，请返回一个bool值,True代表所有字符全都不同，Fa">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.luozijian.top/2017/07/30/craking the code interview 第五版 C++实现/"/>
+
+
+
+
+
+  <title>craking the code interview 第五版 C++实现 | JUST FOR FUN</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?da4d6940e06ce06e9f920408d96a6a5d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JUST FOR FUN</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">罗宝健的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.luozijian.top/2017/07/30/craking the code interview 第五版 C++实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luozijian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST FOR FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                craking the code interview 第五版 C++实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T00:18:42+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础/" itemprop="url" rel="index">
+                    <span itemprop="name">基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/07/30/craking the code interview 第五版 C++实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/30/craking the code interview 第五版 C++实现/" class="leancloud_visitors" data-flag-title="craking the code interview 第五版 C++实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="面试考题"><a href="#面试考题" class="headerlink" title="面试考题"></a>面试考题</h1><p>本篇为学习笔记，题目出自 <strong>craking the code interview</strong>，中文译名 <strong>程序员面试经典（第五版）</strong>，用 C/C++ 实现</p>
+<h2 id="一-字符串与数组"><a href="#一-字符串与数组" class="headerlink" title="一. 字符串与数组"></a>一. 字符串与数组</h2><h3 id="1-确定字符互异"><a href="#1-确定字符互异" class="headerlink" title="1. 确定字符互异"></a>1. 确定字符互异</h3><blockquote>
+<p>题目描述：</p>
+<p>请实现一个算法，确定一个字符串的所有字符是否全都不同。这里我们要求不允许使用额外的存储结构。</p>
+<p>给定一个string <strong>iniString</strong>，请返回一个bool值,<strong>True</strong>代表所有字符全都不同，<strong>False</strong>代表存在相同的字符。保证字符串中的字符为ASCII字符。字符串的长度小于等于3000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;aeiou&quot; 返回：True</div><div class="line">&gt; &quot;BarackObama&quot; 返回：False</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><p>较差的实现方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Different &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkDifferent</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(iniString.length() == <span class="number">0</span> || iniString.length() &gt; <span class="number">256</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; iniString.length() - <span class="number">1</span>;i++)&#123;</div><div class="line">          <span class="comment">//长度-1是因为最后一个元素不需要比较，前面已经比较过了</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>;j &lt; iniString.length();j++)&#123;</div><div class="line">                <span class="keyword">if</span>(iniString[i] == iniString[j])&#123;</div><div class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>较优的实现方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Different &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkDifferent</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(iniString.length() == <span class="number">0</span> || iniString.length() &gt; <span class="number">256</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">bool</span> b[<span class="number">256</span>] = &#123;<span class="literal">true</span>&#125;;<span class="comment">//C++里面要先赋值，否则会提示数组越界</span></div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; iniString.length();i++)&#123;</div><div class="line">            <span class="keyword">int</span> c = iniString[i];</div><div class="line">            </div><div class="line">            <span class="keyword">if</span>(b[c] == <span class="literal">true</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            b[c] = <span class="literal">true</span>;<span class="comment">//出现过一次的数设为true，第二次一旦出现则返回false</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="2-原串翻转"><a href="#2-原串翻转" class="headerlink" title="2. 原串翻转"></a>2. 原串翻转</h3><blockquote>
+<p>题目描述：</p>
+<p>请实现一个算法，在不使用额外数据结构和储存空间的情况下，翻转一个给定的字符串(可以使用单个过程变量)。</p>
+<p>给定一个string <strong>iniString</strong>，请返回一个string，为翻转后的字符串。保证字符串的长度小于等于5000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;This is nowcoder&quot;</div><div class="line">&gt; 返回：&quot;redocwon si sihT&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Reverse &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseString</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> end = iniString.length() - <span class="number">1</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> tmp;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(start &lt; end)&#123;</div><div class="line">            tmp = iniString[start]; </div><div class="line">            iniString[start++] = iniString[end];</div><div class="line">            iniString[end--] = tmp;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> iniString;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="3-确定两串乱序同构"><a href="#3-确定两串乱序同构" class="headerlink" title="3. 确定两串乱序同构"></a>3. 确定两串乱序同构</h3><blockquote>
+<p>题目描述</p>
+<p>给定两个字符串，请编写程序，确定其中一个字符串的字符重新排列后，能否变成另一个字符串。这里规定大小写为不同字符，且考虑字符串重点空格。</p>
+<p>给定一个string <strong>stringA</strong>和一个string <strong>stringB</strong>，请返回一个bool，代表两串是否重新排列后可相同。保证两串的长度都小于等于5000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;This is nowcoder&quot;,&quot;is This nowcoder&quot;</div><div class="line">&gt; 返回：true</div><div class="line">&gt; &quot;Here you are&quot;,&quot;Are you here&quot;</div><div class="line">&gt; 返回：false</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Same &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkSam</span><span class="params">(<span class="built_in">string</span> stringA, <span class="built_in">string</span> stringB)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(stringA.length() != stringB.length())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        sort(stringA.begin(),stringA.end());</div><div class="line">        sort(stringB.begin(),stringB.end());</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (stringA == stringB)</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="4-空格替换"><a href="#4-空格替换" class="headerlink" title="4. 空格替换"></a>4. 空格替换</h3><blockquote>
+<p>题目描述</p>
+<p>请编写一个方法，将字符串中的空格全部替换为“%20”。假定该字符串有足够的空间存放新增的字符，并且知道字符串的真实长度(小于等于1000)，同时保证字符串由大小写的英文字母组成。</p>
+<p>给定一个string <strong>iniString</strong> 为原始的串，以及串的长度 int <strong>len</strong>, 返回替换后的string。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;Mr John Smith”,13</div><div class="line">&gt; 返回：&quot;Mr%20John%20Smith&quot;</div><div class="line">&gt; ”Hello  World”,12</div><div class="line">&gt; 返回：”Hello%20%20World”</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Replacement &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">replaceSpace</span><span class="params">(<span class="built_in">string</span> iniString, <span class="keyword">int</span> length)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">string</span> str=<span class="string">""</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)&#123;</div><div class="line">            <span class="keyword">if</span>(iniString[i]==<span class="string">' '</span>)&#123;</div><div class="line">                str += <span class="built_in">string</span>(<span class="string">"%20"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                str += iniString[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> str;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="5-基本字符串压缩"><a href="#5-基本字符串压缩" class="headerlink" title="5. 基本字符串压缩"></a>5. 基本字符串压缩</h3><blockquote>
+<p>题目描述</p>
+<p>利用字符重复出现的次数，编写一个方法，实现基本的字符串压缩功能。比如，字符串“aabcccccaaa”经压缩会变成“a2b1c5a3”。若压缩后的字符串没有变短，则返回原先的字符串。</p>
+<p>给定一个string iniString为待压缩的串(长度小于等于10000)，保证串内字符均由大小写英文字母组成，返回一个string，为所求的压缩后或未变化的串。</p>
+<p>测试样例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;aabcccccaaa&quot;</div><div class="line">&gt; 返回：&quot;a2b1c5a3&quot;</div><div class="line">&gt; &quot;welcometonowcoderrrrr&quot;</div><div class="line">&gt; 返回：&quot;welcometonowcoderrrrr&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Zipper &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">zipString</span><span class="params">(<span class="built_in">string</span> iniString)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">string</span> myStr;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">1</span>,i;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> last = iniString[<span class="number">0</span>];<span class="comment">//最后一个不同的字符</span></div><div class="line">        <span class="keyword">for</span>(i = <span class="number">1</span>;i &lt; iniString.length();i++)&#123;</div><div class="line">            <span class="keyword">if</span>(last == iniString[i])&#123;</div><div class="line">                count++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                myStr += last + to_string(count);</div><div class="line">                last = iniString[i];</div><div class="line">                count = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">string</span> res = myStr + last + to_string(count);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(res.length() &gt;= iniString.length())&#123;</div><div class="line">            <span class="keyword">return</span> iniString;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="6-像素翻转"><a href="#6-像素翻转" class="headerlink" title="6. 像素翻转"></a>6. 像素翻转</h3><blockquote>
+<p>题目描述</p>
+<p>有一副由NxN矩阵表示的图像，这里每个像素用一个int表示，请编写一个算法，在不占用额外内存空间的情况下(即不使用缓存矩阵)，将图像顺时针旋转90度。</p>
+<p>给定一个NxN的矩阵，和矩阵的阶数N,请返回旋转后的NxN矩阵,保证N小于等于500，图像元素小于等于256。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; [[1,2,3],[4,5,6],[7,8,9]],3</div><div class="line">&gt; 返回：[[7,4,1],[8,5,2],[9,6,3]]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="7-清除行列"><a href="#7-清除行列" class="headerlink" title="7. 清除行列"></a>7. 清除行列</h3><blockquote>
+<p>题目描述</p>
+<p>请编写一个算法，若N阶方阵中某个元素为0，则将其所在的行与列清零。</p>
+<p>给定一个N阶方阵<strong>int[][]</strong>(C++中为vector&gt;)<strong>mat</strong>和矩阵的阶数<strong>n</strong>，请返回完成操作后的<strong>int[][]</strong>方阵(C++中为vector&gt;)，保证n小于等于300，矩阵中的元素为int范围内。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; [[1,2,3],[0,1,2],[0,0,1]]</div><div class="line">&gt; 返回：[[0,0,3],[0,0,0],[0,0,0]]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Clearer &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; clearZero(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; mat, <span class="keyword">int</span> n) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; row(n,<span class="literal">false</span>);</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; column(n,<span class="literal">false</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i &lt; n;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(mat[i][j] == <span class="number">0</span>)&#123;</div><div class="line">                    row[i] = <span class="literal">true</span>;</div><div class="line">                    column[j] = <span class="literal">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(row[i] || column[j])&#123;</div><div class="line">                    mat[i][j] = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> mat;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="8-翻转子串"><a href="#8-翻转子串" class="headerlink" title="8. 翻转子串"></a>8. 翻转子串</h3><blockquote>
+<p>题目描述</p>
+<p>假定我们都知道非常高效的算法来检查一个单词是否为其他字符串的子串。请将这个算法编写成一个函数，给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成，要求只能调用一次检查子串的函数。</p>
+<p>给定两个字符串s1,s2,请返回bool值代表s2是否由s1旋转而成。字符串中字符为英文字母和空格，区分大小写，字符串长度小于等于1000。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &quot;Hello world&quot;,&quot;worldhello &quot;</div><div class="line">&gt; 返回：false</div><div class="line">&gt; &quot;waterbottle&quot;,&quot;erbottlewat&quot;</div><div class="line">&gt; 返回：true</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> ReverseEqual &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkReverseEqual</span><span class="params">(<span class="built_in">string</span> s1, <span class="built_in">string</span> s2)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(s1.length() != s2.length())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">string</span> s1s1 = s1 + s1;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(s1s1.find(s2) == <span class="number">-1</span>)&#123;</div><div class="line">          <span class="comment">//原理:s2(旋转后的串) 一定是 s1(原串) ＋ s1 的子串,否则 s2 不能由 s1 旋转而来</span></div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="二、链表"><a href="#二、链表" class="headerlink" title="二、链表"></a>二、链表</h2><h3 id="1-链表中倒数第-k-个结点"><a href="#1-链表中倒数第-k-个结点" class="headerlink" title="1. 链表中倒数第 k 个结点"></a>1. 链表中倒数第 k 个结点</h3><blockquote>
+<p>题目描述</p>
+<p>输入一个链表，输出该链表中倒数第k个结点。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">	int val;</div><div class="line">	struct ListNode *next;</div><div class="line">	ListNode(int x) :</div><div class="line">			val(x), next(NULL) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">FindKthToTail</span><span class="params">(ListNode* pListHead, <span class="keyword">unsigned</span> <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">   </div><div class="line">        <span class="keyword">if</span>(pListHead == <span class="literal">NULL</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">      <span class="comment">//双指针</span></div><div class="line">        ListNode *p1 = pListHead;</div><div class="line">        ListNode *p2 = pListHead;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= k;i++)&#123;</div><div class="line">          <span class="comment">//p2先向前移动k位</span></div><div class="line">            <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">            &#125;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;</div><div class="line">       </div><div class="line">        <span class="keyword">while</span>(p2 != <span class="literal">NULL</span>)&#123;</div><div class="line">          <span class="comment">//p1 p2同时移动，当p2到达</span></div><div class="line">            p1 = p1-&gt;next;</div><div class="line">            p2 = p2-&gt;next;</div><div class="line">        &#125;   </div><div class="line">        <span class="keyword">return</span> p1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="2-访问单个节点的删除"><a href="#2-访问单个节点的删除" class="headerlink" title="2. 访问单个节点的删除"></a>2. 访问单个节点的删除</h3><blockquote>
+<p>题目描述</p>
+<p>实现一个算法，删除单向链表中间的某个结点，假定你只能访问该结点。</p>
+<p>给定待删除的节点，请执行删除操作，若该节点为尾节点，返回false，否则返回true</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Remove &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">removeNode</span><span class="params">(ListNode* pNode)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(!pNode || !pNode-&gt;next)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ListNode* p = pNode-&gt;next;</div><div class="line">        </div><div class="line">        pNode-&gt;val = p-&gt;val;</div><div class="line">        </div><div class="line">        pNode-&gt;next = p-&gt;next;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="3-链表分割"><a href="#3-链表分割" class="headerlink" title="3. 链表分割"></a>3. 链表分割</h3><blockquote>
+<p>题目描述</p>
+<p>编写代码，以给定值x为基准将链表分割成两部分，所有小于x的结点排在大于或等于x的结点之前</p>
+<p>给定一个链表的头指针 ListNode<em> <em>*pHead</em></em>，请返回重新排列后的链表的头指针。注意：分割以后保持原来的数据顺序不变。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Partition &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* pHead, <span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        ListNode* temp1 = <span class="literal">nullptr</span>;</div><div class="line">        ListNode* head1 = <span class="literal">nullptr</span>;</div><div class="line">        ListNode* head2 = <span class="literal">nullptr</span>;</div><div class="line">        ListNode* temp2 = <span class="literal">nullptr</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(pHead != <span class="literal">nullptr</span>)&#123;</div><div class="line">            ListNode* node = pHead-&gt;next;<span class="comment">//此处保留下一个节点，因为要赋值的节点的next要设置为null</span></div><div class="line">            pHead-&gt;next = <span class="literal">nullptr</span>;<span class="comment">//将next为空，这样才能只赋值一个节点</span></div><div class="line">            <span class="keyword">if</span>(pHead-&gt;val &lt; x)&#123;</div><div class="line">                <span class="keyword">if</span>(head1 == <span class="literal">nullptr</span>)&#123;</div><div class="line">                    head1 = pHead;</div><div class="line">                    temp1 = head1;</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    temp1-&gt;next = pHead;</div><div class="line">                    temp1 = temp1-&gt;next;</div><div class="line">                &#125;                </div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">if</span>(head2 == <span class="literal">nullptr</span>)&#123;</div><div class="line">                    head2 = pHead;</div><div class="line">                    temp2 = head2;</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    temp2-&gt;next = pHead;</div><div class="line">                    temp2 = temp2-&gt;next;</div><div class="line">                &#125;      </div><div class="line">            &#125;</div><div class="line">            pHead = node;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//此处要判断是否为空</span></div><div class="line">        <span class="keyword">if</span>(head1 == <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">return</span> head2;</div><div class="line">        &#125;</div><div class="line">        temp1-&gt;next = head2;</div><div class="line">        <span class="keyword">return</span> head1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="4-链式A-B"><a href="#4-链式A-B" class="headerlink" title="4. 链式A+B"></a>4. 链式A+B</h3><blockquote>
+<p>题目描述</p>
+<p>有两个用链表表示的整数，每个结点包含一个数位。这些数位是反向存放的，也就是个位排在链表的首部。编写函数对这两个整数求和，并用链表形式返回结果。</p>
+<p>给定两个链表ListNode<em> <strong>A</strong>，ListNode</em> <strong>B</strong>，请返回A+B的结果(ListNode*)。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; &#123;1,2,3&#125;,&#123;3,2,1&#125;</div><div class="line">&gt; 返回：&#123;4,4,4&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Plus &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">plusAB</span><span class="params">(ListNode* a, ListNode* b)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(a == <span class="literal">nullptr</span> || b == <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ListNode* head = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);<span class="comment">//创建一个空链表</span></div><div class="line">        ListNode* p = head;<span class="comment">//创建p指针指向head</span></div><div class="line">        ListNode* pa = a;</div><div class="line">        ListNode* pb = b;</div><div class="line">        ListNode* node = <span class="literal">nullptr</span>;<span class="comment">//声明存放结果节点的变量，初值为空</span></div><div class="line">        </div><div class="line">        <span class="keyword">int</span> c = <span class="number">0</span>,sum,val1,val2;<span class="comment">//声明 进位、和、值1、值2</span></div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(pa != <span class="literal">nullptr</span> || pb != <span class="literal">nullptr</span> || c != <span class="number">0</span>)&#123;</div><div class="line">            val1 = pa == <span class="literal">nullptr</span> ? <span class="number">0</span> : pa-&gt;val;</div><div class="line">            val2 = pb == <span class="literal">nullptr</span> ? <span class="number">0</span> : pb-&gt;val;</div><div class="line"></div><div class="line">            sum = val1 + val2 + c;</div><div class="line">            c = sum / <span class="number">10</span>;</div><div class="line">            </div><div class="line">            node = <span class="keyword">new</span> ListNode(sum%<span class="number">10</span>);<span class="comment">//创建链表，值为当前位结果值</span></div><div class="line">            </div><div class="line">            <span class="comment">//尾插法</span></div><div class="line">            p-&gt;next = node;<span class="comment">//给head创建后继节点</span></div><div class="line">            p = node;<span class="comment">//p移动到node</span></div><div class="line">            </div><div class="line">            pa = pa == <span class="literal">nullptr</span> ? <span class="literal">nullptr</span> : pa-&gt;next;</div><div class="line">            pb = pb == <span class="literal">nullptr</span> ? <span class="literal">nullptr</span> : pb-&gt;next;</div><div class="line"></div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head-&gt;next;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="5-回文链表"><a href="#5-回文链表" class="headerlink" title="5. 回文链表"></a>5. 回文链表</h3><blockquote>
+<p>题目描述</p>
+<p>请编写一个函数，检查链表是否为回文。</p>
+<p>给定一个链表ListNode<em> <em>*pHead</em></em>，请返回一个bool，代表链表是否为回文。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; &#123;1,2,3,2,1&#125;</div><div class="line">&gt; 返回：true</div><div class="line">&gt; &#123;1,2,3,2,3&#125;</div><div class="line">&gt; 返回：false</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><p>反转链表并比较</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Palindrome &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* pHead)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(pHead == <span class="literal">nullptr</span> || pHead-&gt;next == <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">string</span> s;</div><div class="line">        <span class="keyword">while</span>(pHead)&#123;</div><div class="line">            s += to_string(pHead-&gt;val);</div><div class="line">            pHead = pHead-&gt;next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">string</span> s2 = s;</div><div class="line">        reverse(s2.begin(),s2.end());</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> s2 == s;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代法：利用快慢指针，找到中间节点；将慢指针节点的值压入栈，到达中间节点后，依次出栈与后续节点的值比较。特别注意长度奇偶数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Palindrome &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* pHead)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(pHead == <span class="literal">nullptr</span> || pHead-&gt;next == <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;<span class="comment">//定义一个栈</span></div><div class="line">        ListNode* fast = pHead;<span class="comment">//快指针</span></div><div class="line">        ListNode* slow = pHead;<span class="comment">//慢指针</span></div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(fast &amp;&amp; fast-&gt;next)&#123;</div><div class="line">            s.push(slow-&gt;val);<span class="comment">//入栈</span></div><div class="line">            slow = slow-&gt;next;</div><div class="line">            fast = fast-&gt;next-&gt;next;<span class="comment">//快指针用慢指针两倍速度移动</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(fast)&#123;</div><div class="line">            <span class="comment">//节点个数是奇数</span></div><div class="line">            slow = slow-&gt;next;<span class="comment">//跳过中间节点</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(slow)&#123;</div><div class="line">            <span class="keyword">if</span>(s.top() != slow-&gt;val)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            s.pop();</div><div class="line">            slow = slow-&gt;next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="三、栈和队列"><a href="#三、栈和队列" class="headerlink" title="三、栈和队列"></a>三、栈和队列</h2><h3 id="1-集合栈"><a href="#1-集合栈" class="headerlink" title="1. 集合栈"></a>1. 集合栈</h3><blockquote>
+<p>题目描述</p>
+<p>请实现一种数据结构SetOfStacks，由多个栈组成，其中每个栈的大小为size，当前一个栈填满时，新建一个栈。该数据结构应支持与普通栈相同的push和pop操作。</p>
+<p>给定一个操作序列int[][2] <strong>ope</strong>(C++为vector<vector<int>&gt;)，每个操作的第一个数代表操作类型，若为1，则为push操作，后一个数为应push的数字；若为2，则为pop操作，后一个数无意义。请返回一个int[]<a href="C++为vector&lt;vector&lt;int&gt;"></a>，为完成所有操作后的SetOfStacks，顺序应为从下到上，默认初始的SetOfStacks为空。保证数据合法。</vector<int></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> SetOfStacks &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; setOfStacks(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; ope, <span class="keyword">int</span> size) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">stack</span>;<span class="comment">//定义结果栈</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp;<span class="comment">//用来置换的栈</span></div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; ope.size();i++)&#123;</div><div class="line">            <span class="keyword">if</span>(ope[i][<span class="number">0</span>] == <span class="number">1</span>)&#123;</div><div class="line">                <span class="comment">//入栈</span></div><div class="line">                <span class="keyword">if</span>(temp.size() == size)&#123;</div><div class="line">                    <span class="comment">//置换的栈满，清空栈再入栈</span></div><div class="line">                    <span class="built_in">stack</span>.push_back(temp);</div><div class="line">                    temp.clear();</div><div class="line">                    temp.push_back(ope[i][<span class="number">1</span>]);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="comment">//栈未满，直接入栈</span></div><div class="line">                    temp.push_back(ope[i][<span class="number">1</span>]);</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">0</span>] == <span class="number">2</span>)&#123;</div><div class="line">                <span class="comment">//出栈</span></div><div class="line">                <span class="keyword">if</span>(temp.empty())&#123;</div><div class="line">                    <span class="comment">//当前栈为空，弹出stack总栈栈顶并赋予temp，然后temp再弹出栈顶元素（相当于回滚一个入栈操作）</span></div><div class="line">                    temp = <span class="built_in">stack</span>[<span class="built_in">stack</span>.size()<span class="number">-1</span>];</div><div class="line">                    <span class="built_in">stack</span>.pop_back();</div><div class="line">                    temp.pop_back();</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="comment">//当前栈不为空，直接出栈</span></div><div class="line">                    temp.pop_back();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(!temp.empty())&#123;</div><div class="line">            <span class="comment">//有残留元素未入栈（未达到size），现在入总栈</span></div><div class="line">            <span class="built_in">stack</span>.push_back(temp);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">stack</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="2-用两个栈实现队列"><a href="#2-用两个栈实现队列" class="headerlink" title="2. 用两个栈实现队列"></a>2. 用两个栈实现队列</h3><blockquote>
+<p>题目描述</p>
+<p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> node)</span> </span>&#123;</div><div class="line">        <span class="comment">//入列</span></div><div class="line">        stack1.push(node);<span class="comment">//将最新元素压入栈1，栈1始终是比较新的元素</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//出列</span></div><div class="line">        <span class="keyword">int</span> tmp;</div><div class="line">        <span class="keyword">if</span>(stack2.empty())&#123;</div><div class="line">            <span class="comment">//旧栈（栈2）为空，则把栈1反转后压入栈2，在栈2出栈，清空栈1</span></div><div class="line">            <span class="keyword">while</span>(!stack1.empty())&#123;</div><div class="line">                tmp = stack1.top();</div><div class="line">                stack2.push(tmp);</div><div class="line">                stack1.pop();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//旧栈不为空，可直接出栈</span></div><div class="line">        tmp = stack2.top();</div><div class="line">        stack2.pop();</div><div class="line">        <span class="keyword">return</span> tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stack1;</div><div class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stack2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="3-双栈排序"><a href="#3-双栈排序" class="headerlink" title="3. 双栈排序"></a>3. 双栈排序</h3><blockquote>
+<p>题目描述</p>
+<p>请编写一个程序，按升序对栈进行排序（即最大元素位于栈顶），要求最多只能使用一个额外的栈存放临时数据，但不得将元素复制到别的数据结构中。</p>
+<p>给定一个int[] <strong>numbers</strong>(C++中为vector&amp;ltint&gt;)，其中第一个元素为栈顶，请返回排序后的栈。请注意这是一个栈，意味着排序过程中你只能访问到第一个元素。</p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; [1,2,3,4,5]</div><div class="line">&gt; 返回：[5,4,3,2,1]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TwoStacks &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoStacksSort(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; numbers) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</div><div class="line">        <span class="keyword">int</span> tmp;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(!numbers.empty())&#123;</div><div class="line">            tmp = numbers.back();<span class="comment">//拿到最先进来的元素(数组的最后一个元素)</span></div><div class="line">            numbers.pop_back();</div><div class="line">            <span class="keyword">while</span>(!res.empty() &amp;&amp; res.back() &gt; tmp)&#123;</div><div class="line">                numbers.push_back(res.back());</div><div class="line">                res.pop_back();</div><div class="line">            &#125;</div><div class="line">            res.push_back(tmp);</div><div class="line">        &#125;</div><div class="line">        reverse(res.begin(),res.end());<span class="comment">//因为一直用的是数组，最后翻转成栈</span></div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="4-猫狗收容所"><a href="#4-猫狗收容所" class="headerlink" title="4. 猫狗收容所"></a>4. 猫狗收容所</h3><blockquote>
+<p>题目描述</p>
+<p> 有家动物收容所只收留猫和狗，但有特殊的收养规则，收养人有两种收养方式，第一种为直接收养所有动物中最早进入收容所的，第二种为选择收养的动物类型（猫或狗），并收养该种动物中最早进入收容所的。</p>
+<p>​       给定一个操作序列int[][2] <strong>ope</strong>(C++中为vector<vector<int>&gt;)代表所有事件。若第一个元素为1，则代表有动物进入收容所，第二个元素为动物的编号，正数代表狗，负数代表猫；若第一个元素为2，则代表有人收养动物，第二个元素若为0，则采取第一种收养方式，若为1，则指定收养狗，若为-1则指定收养猫。请按顺序返回收养的序列。若出现不合法的操作，即没有可以符合领养要求的动物，则将这次领养操作忽略。</vector<int></p>
+<p>测试样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; [[1,1],[1,-1],[2,0],[2,-1]]</div><div class="line">&gt; 返回：[1,-1]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><p>如果只维护一个队列，只需要取出队头的动物则可以，但如果指定要收养猫或者狗就要迭代访问整个队列，效率比较低</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> CatDogAsylum &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; asylum(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; ope) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; animals;<span class="comment">//收容所动物数组</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;<span class="comment">//结果数组</span></div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; ope.size();i++)&#123;</div><div class="line">            <span class="keyword">if</span>(ope[i][<span class="number">0</span>] == <span class="number">1</span>)&#123;</div><div class="line">                <span class="comment">//有动物进入收容所</span></div><div class="line">                animals.push_back(ope[i][<span class="number">1</span>]);<span class="comment">//狗就是正数，猫是负数</span></div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">0</span>] == <span class="number">2</span>)&#123;</div><div class="line">                <span class="comment">//有人收养动物</span></div><div class="line">                <span class="keyword">if</span>(animals.empty())&#123;</div><div class="line">                    <span class="comment">//收容所没有动物</span></div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(ope[i][<span class="number">1</span>] == <span class="number">0</span>)&#123;</div><div class="line">                    <span class="comment">//第一种收养方式</span></div><div class="line">                    res.push_back(animals[<span class="number">0</span>]);</div><div class="line">                    animals.erase(animals.begin());<span class="comment">//删除动物</span></div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">1</span>] == <span class="number">1</span>)&#123;</div><div class="line">                    <span class="comment">//收养狗</span></div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; animals.size();j++)&#123;</div><div class="line">                        <span class="keyword">if</span>(animals[j] &gt; <span class="number">0</span>)&#123;</div><div class="line">                            <span class="comment">//狗是正数</span></div><div class="line">                            res.push_back(animals[j]);</div><div class="line">                            animals.erase(animals.begin() + j);<span class="comment">//删除狗</span></div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">1</span>] == <span class="number">-1</span>)&#123;</div><div class="line">                    <span class="comment">//收养猫</span></div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; animals.size();j++)&#123;</div><div class="line">                        <span class="keyword">if</span>(animals[j] &lt; <span class="number">0</span>)&#123;</div><div class="line">                            <span class="comment">//猫是负数</span></div><div class="line">                            res.push_back(animals[j]);</div><div class="line">                            animals.erase(animals.begin() + j);<span class="comment">//删除猫</span></div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>用两个队列，猫和狗各自一个队列来维护，用一个变量记录时间顺序，就可以返回最老的一只猫或狗</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> CatDogAsylum &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; asylum(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; ope) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; cats;</div><div class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; dogs;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> step = <span class="number">0</span>;<span class="comment">//动物进入收容所的时间记录</span></div><div class="line">        <span class="keyword">int</span> oldest;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; ope.size();i++)&#123;</div><div class="line">            <span class="keyword">if</span>(ope[i][<span class="number">0</span>] == <span class="number">1</span>)&#123;</div><div class="line">                <span class="comment">//有动物进入收容所</span></div><div class="line">                <span class="keyword">if</span>(ope[i][<span class="number">1</span>] &gt; <span class="number">0</span>)&#123;</div><div class="line">                    <span class="comment">//狗</span></div><div class="line">                    dogs.push(step++);</div><div class="line">                    dogs.push(ope[i][<span class="number">1</span>]);</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">1</span>] &lt; <span class="number">0</span>)&#123;</div><div class="line">                    <span class="comment">//猫</span></div><div class="line">                    cats.push(step++);</div><div class="line">                    cats.push(ope[i][<span class="number">1</span>]);</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">0</span>] == <span class="number">2</span>)&#123;</div><div class="line">                <span class="comment">//有人收养动物</span></div><div class="line">                <span class="keyword">if</span>(cats.empty() &amp;&amp; dogs.empty())&#123;</div><div class="line">                    <span class="comment">//收容所没有动物</span></div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(ope[i][<span class="number">1</span>] == <span class="number">0</span>)&#123;</div><div class="line">                    <span class="comment">//第一种收养方式</span></div><div class="line">                    <span class="keyword">if</span>(!cats.empty() &amp;&amp; dogs.empty())&#123;</div><div class="line">                        <span class="comment">//有猫无狗</span></div><div class="line">                        oldest = <span class="number">-1</span>;</div><div class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cats.empty() &amp;&amp; !dogs.empty())&#123;</div><div class="line">                        <span class="comment">//有狗无猫</span></div><div class="line">                        oldest = <span class="number">1</span>;</div><div class="line">                	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(!cats.empty() &amp;&amp; !dogs.empty())&#123;</div><div class="line">                        <span class="comment">//有狗也有猫</span></div><div class="line">                        oldest = cats.front() &lt; dogs.front() ? <span class="number">-1</span> : <span class="number">1</span>;</div><div class="line">                    &#125;</div><div class="line">                    </div><div class="line">                    <span class="keyword">if</span>(oldest == <span class="number">1</span>)&#123;</div><div class="line">                        dogs.pop();<span class="comment">//删除step</span></div><div class="line">                        res.push_back(dogs.front());</div><div class="line">                        dogs.pop();<span class="comment">//删除狗编号</span></div><div class="line">                    &#125;<span class="keyword">else</span>&#123;</div><div class="line">                        cats.pop();</div><div class="line">                        res.push_back(cats.front());</div><div class="line">                        cats.pop();</div><div class="line">                    &#125;</div><div class="line">            	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">1</span>] == <span class="number">1</span> &amp;&amp; !dogs.empty())&#123;</div><div class="line">                    <span class="comment">//收养狗</span></div><div class="line">                    dogs.pop();<span class="comment">//删除step</span></div><div class="line">                    res.push_back(dogs.front());</div><div class="line">                    dogs.pop();<span class="comment">//删除狗编号</span></div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ope[i][<span class="number">1</span>] == <span class="number">-1</span> &amp;&amp; !cats.empty())&#123;</div><div class="line">                    <span class="comment">//收养猫</span></div><div class="line">                    cats.pop();</div><div class="line">                    res.push_back(cats.front());</div><div class="line">                    cats.pop();</div><div class="line">                &#125;</div><div class="line">        	&#125;</div><div class="line">    	&#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="四、树与图"><a href="#四、树与图" class="headerlink" title="四、树与图"></a>四、树与图</h2><h3 id="1-二叉树平衡检查"><a href="#1-二叉树平衡检查" class="headerlink" title="1. 二叉树平衡检查"></a>1. 二叉树平衡检查</h3><blockquote>
+<p>题目描述</p>
+<p>实现一个函数，检查二叉树是否平衡，平衡的定义如下，对于树中的任意一个结点，其两颗子树的高度差不超过1。</p>
+<p>给定指向树根结点的指针TreeNode<em> <em>*root</em></em>，请返回一个bool，代表这棵树是否平衡。</p>
+</blockquote>
+<ul>
+<li><p>方法一：首先想到的是如何求一个树的高度，求一个树的高度很简单，递归求解，每次求出左右子树的最大高度再加1便是父节点的高度，这样递归下去，便可以求出任何一颗树的高度</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct TreeNode &#123;</div><div class="line">    int val;</div><div class="line">    struct TreeNode *left;</div><div class="line">    struct TreeNode *right;</div><div class="line">    TreeNode(int x) :</div><div class="line">            val(x), left(NULL), right(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;*/</div><div class="line"></div><div class="line"><span class="keyword">class</span> Balance &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBalance</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//递归完所有结点了，并无不平衡</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(getHeight(root-&gt;left) - getHeight(root-&gt;right)) &gt; <span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//abs是求两棵树高度差的绝对值</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> isBalance(root-&gt;left) &amp;&amp; isBalance(root-&gt;right);<span class="comment">//递归判断左右子树是否“同时”平衡</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getHeight</span><span class="params">(TreeNode* root)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//递归到最后的子结点，高度是0</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> left_height = getHeight(root-&gt;left);</div><div class="line">        <span class="keyword">int</span> right_height = getHeight(root-&gt;right);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> left_height &gt; right_height ? left_height + <span class="number">1</span> :  right_height + <span class="number">1</span>;<span class="comment">//＋1就是父结点高度</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>方法二：递归到最后的子结点，向上递归的时候，如果左右子树高度不平衡，返回－1，平衡则返回父结点的高度</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct TreeNode &#123;</div><div class="line">    int val;</div><div class="line">    struct TreeNode *left;</div><div class="line">    struct TreeNode *right;</div><div class="line">    TreeNode(int x) :</div><div class="line">            val(x), left(NULL), right(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;*/</div><div class="line"></div><div class="line"><span class="keyword">class</span> Balance &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBalance</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">return</span> checkHeight(root) != <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">checkHeight</span><span class="params">(TreeNode* root)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//先检查左右子树是否平衡，从下往上判断，不平衡就返回-1，这样以免每次都从上计算到最底下</span></div><div class="line">        <span class="keyword">int</span> left_height = checkHeight(root-&gt;left);</div><div class="line">        <span class="keyword">if</span>(left_height == <span class="number">-1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> right_height = checkHeight(root-&gt;right);</div><div class="line">        <span class="keyword">if</span>(right_height == <span class="number">-1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//再判断此节点是否平衡，平衡返回高度</span></div><div class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(left_height - right_height) &gt; <span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> left_height &gt; right_height ? left_height + <span class="number">1</span> : right_height + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-有向路径检查"><a href="#2-有向路径检查" class="headerlink" title="2. 有向路径检查"></a>2. 有向路径检查</h3><blockquote>
+<p>题目描述</p>
+<p>对于一个有向图，请实现一个算法，找出两点之间是否存在一条路径。</p>
+<p>给定图中的两个结点的指针UndirectedGraphNode<em> <strong>a</strong>,UndirectedGraphNode</em> <strong>b</strong>(请不要在意数据类型，图是有向图),请返回一个bool，代表两点之间是否存在一条路径(a到b或b到a)。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct UndirectedGraphNode &#123;</div><div class="line">    int label;</div><div class="line">    vector&lt;struct UndirectedGraphNode *&gt; neighbors;</div><div class="line">    UndirectedGraphNode(int x) : label(x) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> Path &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkPath</span><span class="params">(UndirectedGraphNode* a, UndirectedGraphNode* b)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">return</span> search(a,b) || search(b,a);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(UndirectedGraphNode* a, UndirectedGraphNode* b)</span></span>&#123;</div><div class="line">       </div><div class="line">        <span class="keyword">if</span>(a == b)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">map</span>&lt;UndirectedGraphNode*,<span class="keyword">bool</span>&gt; m;<span class="comment">//记录所有结点是否被访问过</span></div><div class="line">        <span class="built_in">queue</span>&lt;UndirectedGraphNode*&gt; q;<span class="comment">//邻居队列</span></div><div class="line">        UndirectedGraphNode* current;</div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        </div><div class="line">        q.push(a);</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(!q.empty())&#123;</div><div class="line">            current = q.front();</div><div class="line">            m[current] = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; current-&gt;neighbors.size();i++)&#123;</div><div class="line">                <span class="comment">//遍历邻居</span></div><div class="line">                <span class="keyword">if</span>(current-&gt;neighbors[i] == b)&#123;</div><div class="line">                    <span class="comment">//邻居就是b，找到路径</span></div><div class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(current-&gt;neighbors[i] != <span class="literal">NULL</span> &amp;&amp; m[current-&gt;neighbors[i]] != <span class="literal">true</span>)&#123;</div><div class="line">                    <span class="comment">//当前这个邻居不为空，而且未被访问过</span></div><div class="line">                    q.push(current-&gt;neighbors[i]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            q.pop();<span class="comment">//把当前访问过的邻居父结点弹出</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//遍历完所有邻居的邻居的邻居。。。</span></div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="3-高度最小的-BST"><a href="#3-高度最小的-BST" class="headerlink" title="3. 高度最小的 BST"></a>3. 高度最小的 BST</h3><blockquote>
+<p>题目描述</p>
+<p>对于一个元素各不相同且按升序排列的有序序列，请编写一个算法，创建一棵高度最小的二叉查找树。</p>
+<p>给定一个有序序列int[] <strong>vals</strong>,请返回创建的二叉查找树的高度。</p>
+</blockquote>
+<p>思路：高度最小即理解为左右子树的结点数量越接近越好，也就是，根结点是数组中间，左半边是左子树，右半边是右子树，第一种方法是从根结点开始递归插入值到树中，构建二叉树，但是这种方法效率不高，每次插入都要遍历整棵树，因此采用第二种方法，传入数组的区间段。</p>
+<ul>
+<li><p>如果是返回高度的话</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> MinimalBST &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">buildMinimalBST</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vals)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">return</span> build(vals,<span class="number">0</span>,vals.size() - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vals,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(start &gt; end)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//遍历到叶子结点了</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> max(build(vals,start,mid - <span class="number">1</span>),build(vals,mid + <span class="number">1</span>,end)) + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果是构建二叉树</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> MinimalBST &#123;</div><div class="line">  <span class="keyword">class</span> TreeNode&#123;</div><div class="line">        <span class="keyword">int</span> val;</div><div class="line">        TreeNode* left = null;</div><div class="line">        TreeNode* right = null;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">            <span class="keyword">this</span>-&gt;val = n;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">buildMinimalBST</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vals)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        <span class="keyword">return</span> build(vals,<span class="number">0</span>,vals.size() - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vals,<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(start &gt; end)&#123;</div><div class="line">            <span class="keyword">return</span> null;<span class="comment">//遍历到叶子结点了</span></div><div class="line">        &#125;</div><div class="line">        TreeNode* node = <span class="keyword">new</span> TreeNode(vals[mid]);</div><div class="line">        <span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</div><div class="line">        node.left = build(vals,start, mid<span class="number">-1</span>);</div><div class="line">        node.right = build(vals,mid+<span class="number">1</span>, end);</div><div class="line">        <span class="keyword">return</span> node;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-树输出单层结点"><a href="#4-树输出单层结点" class="headerlink" title="4. 树输出单层结点"></a>4. 树输出单层结点</h3><blockquote>
+<p>题目描述</p>
+<p>对于一棵二叉树，请设计一个算法，创建含有某一深度上所有结点的链表。</p>
+<p>给定二叉树的根结点指针TreeNode<em> <em>*root</em></em>，以及链表上结点的深度，请返回一个链表ListNode，代表该深度上所有结点的值，请按树上从左往右的顺序链接，保证深度不超过树的高度，树上结点的值为非负整数且不超过100000。</p>
+</blockquote>
+<p>思路：有两种方法，第一种方法使用递归遍历整颗树，如果递归的当前结点是需要输出的那一层的结点，则把结点插入到链表中，最后返回链表即可。第二种方法，使用层次遍历，即广度优先遍历的方法，利用队列实现。</p>
+<ul>
+<li><p>方法一：递归（深度优先）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct TreeNode &#123;</div><div class="line">    int val;</div><div class="line">    struct TreeNode *left;</div><div class="line">    struct TreeNode *right;</div><div class="line">    TreeNode(int x) :</div><div class="line">            val(x), left(NULL), right(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;*/</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> TreeLevel &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">getTreeLevel</span><span class="params">(TreeNode* root, <span class="keyword">int</span> dep)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        ListNode* <span class="built_in">list</span> = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);<span class="comment">//存放单层结点的链表</span></div><div class="line">        ListNode* listHead = <span class="built_in">list</span>;<span class="comment">//结果链表</span></div><div class="line">        insert(root,<span class="built_in">list</span>,dep);</div><div class="line">        <span class="keyword">return</span> listHead-&gt;next;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(TreeNode* root,ListNode* &amp;<span class="built_in">list</span>,<span class="keyword">int</span> dep)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span> || dep &lt;= <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(dep == <span class="number">1</span>)&#123;</div><div class="line">            ListNode* temp = <span class="keyword">new</span> ListNode(root-&gt;val);</div><div class="line">            <span class="built_in">list</span>-&gt;next = temp;</div><div class="line">            <span class="built_in">list</span> = <span class="built_in">list</span>-&gt;next;<span class="comment">//为什么要移动指针，因为下面要作为参数递归，每一次递归的当前指针指向的都是上一次递归指向的结点</span></div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line">        insert(root-&gt;left,<span class="built_in">list</span>,dep<span class="number">-1</span>);</div><div class="line">        insert(root-&gt;right,<span class="built_in">list</span>,dep<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>方法二：层次遍历（广度优先），利用current变量记录当前层数的结点数，next变量记录下一层结点数，line纪录当前遍历层数，每遍历一个当前层数结点，current减一，如果发现current＝＝0，就把下一层入列的结点数变为当前层结点数，进入下一层。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct TreeNode &#123;</div><div class="line">    int val;</div><div class="line">    struct TreeNode *left;</div><div class="line">    struct TreeNode *right;</div><div class="line">    TreeNode(int x) :</div><div class="line">            val(x), left(NULL), right(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;*/</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">struct ListNode &#123;</div><div class="line">    int val;</div><div class="line">    struct ListNode *next;</div><div class="line">    ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">&#125;;*/</div><div class="line"><span class="keyword">class</span> TreeLevel &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">getTreeLevel</span><span class="params">(TreeNode* root, <span class="keyword">int</span> dep)</span> </span>&#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        ListNode* <span class="built_in">list</span> = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</div><div class="line">        ListNode* listHead = <span class="built_in">list</span>;</div><div class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</div><div class="line">        que.push(root);</div><div class="line">        <span class="keyword">int</span> current=<span class="number">1</span>,next=<span class="number">0</span>,line=<span class="number">1</span>;<span class="comment">//当前层结点个数，下一层结点个数，当前遍历层数</span></div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(!que.empty())&#123;</div><div class="line">            <span class="keyword">if</span>(line == dep)&#123;</div><div class="line">                <span class="comment">//当前层就是要的层，把队列所有结点插入链表，返回结果链表</span></div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; current;i++)&#123;</div><div class="line">                    TreeNode* node = que.front();</div><div class="line">                    <span class="built_in">list</span>-&gt;next = <span class="keyword">new</span> ListNode(node-&gt;val);</div><div class="line">                    <span class="built_in">list</span> = <span class="built_in">list</span>-&gt;next;</div><div class="line">                    que.pop();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> listHead-&gt;next;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            TreeNode* node = que.front();<span class="comment">//取出跟结点</span></div><div class="line">            </div><div class="line">            <span class="keyword">if</span>(node-&gt;left)&#123;</div><div class="line">                <span class="comment">//有左子结点</span></div><div class="line">                que.push(node-&gt;left);</div><div class="line">                next++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(node-&gt;right)&#123;</div><div class="line">                <span class="comment">//有右子结点</span></div><div class="line">                que.push(node-&gt;right);</div><div class="line">                next++;</div><div class="line">            &#125;</div><div class="line">            que.pop();<span class="comment">//弹出根结点</span></div><div class="line">            <span class="keyword">if</span>(--current == <span class="number">0</span>)&#123;</div><div class="line">                <span class="comment">//当前层已全部弹出（全部遍历），进入下一层</span></div><div class="line">                current = next;</div><div class="line">                next = <span class="number">0</span>;</div><div class="line">                line++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> listHead-&gt;next;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-检查是否为BST"><a href="#5-检查是否为BST" class="headerlink" title="5. 检查是否为BST"></a>5. 检查是否为BST</h3><blockquote>
+<p>题目描述</p>
+<p>请实现一个函数，检查一棵二叉树是否为二叉查找树。</p>
+<p>给定树的根结点指针TreeNode<em> <em>*root</em></em>，请返回一个bool，代表该树是否为二叉查找树。</p>
+</blockquote>
+<ul>
+<li><p>解法一：中序遍历二叉树，一旦不满足 left &lt;= current &lt; right 的情况则返回 false</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct TreeNode &#123;</div><div class="line">    int val;</div><div class="line">    struct TreeNode *left;</div><div class="line">    struct TreeNode *right;</div><div class="line">    TreeNode(int x) :</div><div class="line">            val(x), left(NULL), right(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;*/</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checker</span> </span>&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    bool checkBST(TreeNode* root) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">      	<span class="comment">//最大最小值时，最初的比较数字就应当设置为INT_MAX或INT_MIN，更为安全</span></div><div class="line">      	<span class="comment">//INT_MAX = 2147483647</span></div><div class="line">      	<span class="comment">//INT_MIN = -2147483648</span></div><div class="line">        int min = INT_MIN;</div><div class="line">        <span class="keyword">return</span> ldr(root,min);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    bool ldr(TreeNode* root,int &amp;last)&#123;</div><div class="line">        <span class="keyword">if</span>(root == nullptr)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;<span class="comment">//当前结点为空</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(!ldr(root-&gt;left,last))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root-&gt;val &lt; last)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        last = root-&gt;val;</div><div class="line">        <span class="keyword">if</span>(!ldr(root-&gt;right,last))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>解法二：递归遍历二叉树的过程中，我们只需要传递两个参数（当前根节点对应的二叉树的所有节点的最大值和最小值），同时不断的更新这两个参数，如果当前节点的值不在这两个数范围中，则直接返回false，否则接着递归便可</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct TreeNode &#123;</div><div class="line">    int val;</div><div class="line">    struct TreeNode *left;</div><div class="line">    struct TreeNode *right;</div><div class="line">    TreeNode(int x) :</div><div class="line">            val(x), left(NULL), right(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;*/</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checker</span> </span>&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    bool checkBST(TreeNode* root) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        int min = INT_MIN;</div><div class="line">        int max = INT_MAX;</div><div class="line">        <span class="keyword">return</span> checker(root,min,max);</div><div class="line">    &#125;</div><div class="line">    bool checker(TreeNode* root,int min,int max)&#123;</div><div class="line">        <span class="keyword">if</span>(root == nullptr)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root-&gt;val &lt; min || root-&gt;val &gt; max)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> checker(root-&gt;left,min,root-&gt;val) &amp;&amp; checker(root-&gt;right,root-&gt;val,max);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-寻找下一个结点"><a href="#6-寻找下一个结点" class="headerlink" title="6. 寻找下一个结点"></a>6. 寻找下一个结点</h3><blockquote>
+<p>题目描述</p>
+<p>请设计一个算法，寻找二叉树中指定结点的下一个结点（即中序遍历的后继）。</p>
+<p>给定树的根结点指针TreeNode<em> <strong>root</strong>和结点的值int <em>*p</em></em>，请返回值为p的结点的后继结点的值。保证结点的值大于等于零小于等于100000且没有重复值，若不存在后继返回-1。</p>
+</blockquote>
+<p>思路：中序遍历所有二叉树，若没找到与p值相同的结点，全部返回-1，一旦找到了，设置引用为true，递归返回结点的值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">struct TreeNode &#123;</div><div class="line">    int val;</div><div class="line">    struct TreeNode *left;</div><div class="line">    struct TreeNode *right;</div><div class="line">    TreeNode(int x) :</div><div class="line">            val(x), left(NULL), right(NULL) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;;*/</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Successor</span> </span>&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    int findSucc(TreeNode* root, int p) &#123;</div><div class="line">        <span class="comment">// write code here</span></div><div class="line">        bool flag = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">return</span> ldr(root,p,flag);</div><div class="line">    &#125;</div><div class="line">    int ldr(TreeNode* root,int p,bool &amp;flag)&#123;</div><div class="line">        <span class="keyword">if</span>(root == nullptr)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        int left = ldr(root-&gt;left,p,flag);</div><div class="line">        <span class="keyword">if</span>(left != <span class="number">-1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> left;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(flag)&#123;</div><div class="line">            <span class="keyword">return</span> root-&gt;val;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(root-&gt;val == p)&#123;</div><div class="line">            flag = <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ldr(root-&gt;right,p,flag);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>喜欢我的文章的话，不如请我大保健</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpeg" alt="Luozijian WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="Luozijian Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/18/Homestead 安装:升级/" rel="prev" title="Homestead 安装：升级">
+                Homestead 安装：升级 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Luozijian" />
+          <p class="site-author-name" itemprop="name">Luozijian</p>
+           
+              <p class="site-description motion-element" itemprop="description">随笔，学习心得</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luozijian" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/lujexm" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/LuozijianWorld" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/luozijian2017" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/luozijian2017" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.szu.space/" title="张智的个人博客" target="_blank">张智的个人博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面试考题"><span class="nav-number">1.</span> <span class="nav-text">面试考题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-字符串与数组"><span class="nav-number">1.1.</span> <span class="nav-text">一. 字符串与数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-确定字符互异"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 确定字符互异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-原串翻转"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 原串翻转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-确定两串乱序同构"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 确定两串乱序同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-空格替换"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 空格替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-基本字符串压缩"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 基本字符串压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-像素翻转"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. 像素翻转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-清除行列"><span class="nav-number">1.1.7.</span> <span class="nav-text">7. 清除行列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-翻转子串"><span class="nav-number">1.1.8.</span> <span class="nav-text">8. 翻转子串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、链表"><span class="nav-number">1.2.</span> <span class="nav-text">二、链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-链表中倒数第-k-个结点"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 链表中倒数第 k 个结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-访问单个节点的删除"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 访问单个节点的删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-链表分割"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 链表分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-链式A-B"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 链式A+B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-回文链表"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 回文链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、栈和队列"><span class="nav-number">1.3.</span> <span class="nav-text">三、栈和队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-集合栈"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 集合栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-用两个栈实现队列"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 用两个栈实现队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-双栈排序"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 双栈排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-猫狗收容所"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. 猫狗收容所</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、树与图"><span class="nav-number">1.4.</span> <span class="nav-text">四、树与图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-二叉树平衡检查"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 二叉树平衡检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-有向路径检查"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 有向路径检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-高度最小的-BST"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 高度最小的 BST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-树输出单层结点"><span class="nav-number">1.4.4.</span> <span class="nav-text">4. 树输出单层结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-检查是否为BST"><span class="nav-number">1.4.5.</span> <span class="nav-text">5. 检查是否为BST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-寻找下一个结点"><span class="nav-number">1.4.6.</span> <span class="nav-text">6. 寻找下一个结点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luozijian</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "0ea1976d1a4c4eff98c30a2f763629d9",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("2tNkL5Cz9qWDga4aqdkiI93w-gzGzoHsz", "Jr3Rff0YrPQQbo7zJqownJUF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
